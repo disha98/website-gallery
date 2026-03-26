@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priya & James — Save the Date</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --charcoal: #2C2C2C;
+            --off-white: #F8F7F4;
+            --gold: #C4A265;
+            --blush: #E8D5C4;
+            --light-gray: #F2F1EE;
+        }
+
+        body {
+            font-family: 'Crimson Pro', Georgia, serif;
+            color: var(--charcoal);
+            background: var(--off-white);
+            line-height: 1.7;
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Back link */
+        .back-link {
+            position: fixed;
+            top: 24px;
+            left: 28px;
+            z-index: 100;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+        .back-link:hover { border-bottom-color: var(--gold); }
+
+        /* Typography */
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+        h1 { font-weight: 300; font-size: clamp(2.4rem, 5vw, 3.8rem); letter-spacing: 6px; text-transform: uppercase; }
+        h2 { font-weight: 300; font-size: clamp(1.2rem, 2.5vw, 1.6rem); letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 40px; }
+        h3 { font-weight: 500; font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; }
+
+        /* Sections */
+        section {
+            padding: 80px 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .section-alt { background: var(--light-gray); }
+        .section-alt section { max-width: 900px; }
+        .full-bg { max-width: 100%; padding-left: 0; padding-right: 0; }
+
+        /* Gold divider */
+        .gold-line {
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.4;
+            border: none;
+        }
+
+        .text-center { text-align: center; }
+
+        /* Hero */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 24px 80px;
+            position: relative;
+        }
+        .hero-subtitle {
+            font-family: 'Crimson Pro', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: 1.15rem;
+            color: var(--gold);
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+        }
+        .hero h1 { margin-bottom: 28px; }
+        .hero-date {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-top: 8px;
+            color: var(--charcoal);
+        }
+        .hero-ornament {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin: 28px auto;
+        }
+        .hero-photo {
+            width: 220px;
+            height: 300px;
+            object-fit: cover;
+            border: 1px solid var(--gold);
+            margin-top: 40px;
+        }
+
+        /* Couple section */
+        .couple-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .couple-photo {
+            width: 100%;
+            max-width: 300px;
+            height: 380px;
+            object-fit: cover;
+            border: 1px solid var(--gold);
+            justify-self: center;
+        }
+        .couple-text p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: #555;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            padding-left: 40px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--gold);
+            opacity: 0.5;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 48px;
+        }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 2px solid var(--off-white);
+            box-shadow: 0 0 0 1px var(--gold);
+        }
+        .timeline-year {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+        .timeline-event {
+            font-size: 1.05rem;
+            color: #444;
+        }
+
+        /* Itinerary */
+        .itinerary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .itinerary-card {
+            background: var(--off-white);
+            padding: 32px 28px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+            border-top: 2px solid var(--gold);
+        }
+        .section-alt .itinerary-card { background: #fff; }
+        .itinerary-time {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        .itinerary-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            color: var(--charcoal);
+        }
+
+        /* Photo strip */
+        .photo-strip {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 48px;
+        }
+        .photo-strip img {
+            width: 180px;
+            height: 240px;
+            object-fit: cover;
+            border: 1px solid var(--gold);
+        }
+
+        /* Countdown */
+        .countdown-section {
+            text-align: center;
+            padding: 64px 24px;
+        }
+        .countdown-label {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .countdown-date {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            letter-spacing: 4px;
+            color: var(--charcoal);
+        }
+
+        /* RSVP / Footer */
+        .footer-section {
+            text-align: center;
+            padding: 80px 24px;
+        }
+        .footer-section p {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #777;
+            margin-top: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .couple-grid { grid-template-columns: 1fr; gap: 32px; }
+            .itinerary-grid { grid-template-columns: 1fr; }
+            .photo-strip img { width: 140px; height: 190px; }
+            section { padding: 56px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../../index.html" class="back-link">&larr; Gallery</a>
+
+    <!-- Hero -->
+    <div class="hero">
+        <p class="hero-subtitle">Together with their families</p>
+        <h1>Priya & James</h1>
+        <div class="hero-ornament"></div>
+        <p class="hero-date">Saturday, October 17, 2026</p>
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=440&h=600&fit=crop" alt="Priya and James" class="hero-photo">
+    </div>
+
+    <hr class="gold-line">
+
+    <!-- Our Story Intro -->
+    <section class="text-center">
+        <h2>Our Story</h2>
+        <div class="couple-grid">
+            <img src="https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=400&h=520&fit=crop" alt="The Couple" class="couple-photo">
+            <div class="couple-text">
+                <p>What started as a chance encounter over lattes became the love story of a lifetime. From quiet mornings together to an unforgettable evening under the Parisian sky, every chapter has led us here — to the beginning of forever.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr class="gold-line">
+
+    <!-- Timeline -->
+    <div class="section-alt">
+        <section>
+            <h2 class="text-center">How We Got Here</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">Summer 2019</div>
+                    <div class="timeline-event">Met at a coffee shop — two strangers, one small table, and a conversation that never really ended.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">Fall 2019</div>
+                    <div class="timeline-event">First date at the botanical garden. We wandered for hours and lost track of time entirely.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2021</div>
+                    <div class="timeline-event">Moved in together — merging bookshelves, playlists, and morning routines.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">March 2025</div>
+                    <div class="timeline-event">A trip to Paris. James proposed at sunset along the Seine. She said yes before he finished asking.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">October 2026</div>
+                    <div class="timeline-event">We celebrate our wedding — surrounded by everyone we love.</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <hr class="gold-line">
+
+    <!-- Countdown -->
+    <div class="countdown-section">
+        <p class="countdown-label">Save the Date</p>
+        <p class="countdown-date">October 17, 2026</p>
+    </div>
+
+    <hr class="gold-line">
+
+    <!-- Photo strip -->
+    <section class="text-center">
+        <h2>Moments</h2>
+        <div class="photo-strip">
+            <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=360&h=480&fit=crop" alt="Engagement">
+            <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=360&h=480&fit=crop" alt="Rings">
+            <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=360&h=480&fit=crop" alt="Bouquet">
+            <img src="https://images.unsplash.com/photo-1544078751-58fee2d8a03b?w=360&h=480&fit=crop" alt="Couple portrait">
+        </div>
+    </section>
+
+    <hr class="gold-line">
+
+    <!-- Itinerary -->
+    <div class="section-alt">
+        <section>
+            <h2 class="text-center">The Day</h2>
+            <div class="itinerary-grid">
+                <div class="itinerary-card">
+                    <div class="itinerary-time">10:00 AM</div>
+                    <div class="itinerary-title">Getting Ready & First Look</div>
+                </div>
+                <div class="itinerary-card">
+                    <div class="itinerary-time">2:00 PM</div>
+                    <div class="itinerary-title">Wedding Ceremony</div>
+                </div>
+                <div class="itinerary-card">
+                    <div class="itinerary-time">3:30 PM</div>
+                    <div class="itinerary-title">Cocktail Hour</div>
+                </div>
+                <div class="itinerary-card">
+                    <div class="itinerary-time">5:00 PM</div>
+                    <div class="itinerary-title">Reception & Dinner</div>
+                </div>
+                <div class="itinerary-card">
+                    <div class="itinerary-time">7:00 PM</div>
+                    <div class="itinerary-title">First Dance & Toasts</div>
+                </div>
+                <div class="itinerary-card">
+                    <div class="itinerary-time">9:00 PM</div>
+                    <div class="itinerary-title">Dancing & Send-Off</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <hr class="gold-line">
+
+    <!-- Footer -->
+    <div class="footer-section">
+        <h2>We Can't Wait to Celebrate with You</h2>
+        <p>More details to follow. With love, Priya & James.</p>
+    </div>
+
+</body>
+</html>

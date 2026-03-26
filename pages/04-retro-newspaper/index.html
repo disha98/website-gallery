@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding Gazette — Priya & James</title>
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --paper: #F5F0E1;
+            --ink: #1A1A1A;
+            --dark-ink: #0D0D0D;
+            --faded: #8B7D6B;
+            --rule: #2A2A2A;
+            --light-rule: #C4B99A;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        body {
+            background-color: var(--paper);
+            color: var(--ink);
+            font-family: 'IM Fell English', serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        img {
+            filter: sepia(80%) contrast(1.1);
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-block;
+            font-family: 'Old Standard TT', serif;
+            font-size: 0.8rem;
+            color: var(--faded);
+            text-decoration: none;
+            padding: 1rem 2rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .back-link:hover {
+            color: var(--ink);
+        }
+
+        /* Page Container */
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Masthead */
+        .masthead {
+            text-align: center;
+            padding: 2rem 0 0;
+            border-bottom: 4px double var(--rule);
+        }
+
+        .masthead-top-rule {
+            border-top: 2px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 0.3rem 0;
+            margin-bottom: 1rem;
+        }
+
+        .masthead-top-rule-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Old Standard TT', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--faded);
+        }
+
+        .masthead-title {
+            font-family: 'Old Standard TT', serif;
+            font-weight: 700;
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            line-height: 1;
+            letter-spacing: 0.02em;
+            margin: 0.5rem 0;
+            text-transform: uppercase;
+        }
+
+        .masthead-subtitle {
+            font-family: 'IM Fell English', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--faded);
+            margin-bottom: 0.8rem;
+        }
+
+        .masthead-rule-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 0.6rem 0;
+            font-family: 'Old Standard TT', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--faded);
+        }
+
+        .masthead-rule-bottom .fleuron {
+            font-size: 1rem;
+            color: var(--light-rule);
+        }
+
+        /* Ornamental Fleurons */
+        .ornament {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--light-rule);
+            margin: 1.5rem 0;
+            letter-spacing: 0.5em;
+        }
+
+        .ornament-small {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--light-rule);
+            margin: 1rem 0;
+        }
+
+        /* Headline Section */
+        .headline-section {
+            text-align: center;
+            padding: 2.5rem 0 2rem;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .headline {
+            font-family: 'Old Standard TT', serif;
+            font-weight: 700;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            line-height: 1.15;
+            margin-bottom: 0.8rem;
+        }
+
+        .subheadline {
+            font-family: 'IM Fell English', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--faded);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Date Banner */
+        .date-banner {
+            text-align: center;
+            padding: 2rem 0;
+            border-bottom: 2px solid var(--rule);
+        }
+
+        .date-banner-date {
+            font-family: 'Old Standard TT', serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            letter-spacing: 0.08em;
+        }
+
+        .date-banner-sub {
+            font-family: 'IM Fell English', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--faded);
+            margin-top: 0.3rem;
+        }
+
+        /* Countdown as "Days Remaining" */
+        .countdown-banner {
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            gap: 0.5rem;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid var(--light-rule);
+            font-family: 'Old Standard TT', serif;
+        }
+
+        .countdown-banner .number {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .countdown-banner .text {
+            font-size: 1rem;
+            font-style: italic;
+            font-family: 'IM Fell English', serif;
+            color: var(--faded);
+        }
+
+        /* Hero Image */
+        .hero-image {
+            margin: 2rem 0;
+            text-align: center;
+            border: 1px solid var(--light-rule);
+            padding: 0.5rem;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .hero-caption {
+            font-family: 'IM Fell English', serif;
+            font-style: italic;
+            font-size: 0.85rem;
+            color: var(--faded);
+            padding: 0.5rem 0 0;
+            text-align: center;
+        }
+
+        /* Columns Layout */
+        .columns-section {
+            padding: 2rem 0;
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .columns-title {
+            font-family: 'Old Standard TT', serif;
+            font-weight: 700;
+            font-size: 1.6rem;
+            text-align: center;
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .columns-subtitle {
+            text-align: center;
+            font-family: 'IM Fell English', serif;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--faded);
+            margin-bottom: 1.5rem;
+        }
+
+        .columns-rule {
+            border: none;
+            border-top: 1px solid var(--light-rule);
+            margin-bottom: 1.5rem;
+        }
+
+        .columns-content {
+            column-count: 3;
+            column-gap: 2rem;
+            column-rule: 1px solid var(--light-rule);
+            font-size: 0.95rem;
+            line-height: 1.75;
+            text-align: justify;
+        }
+
+        .columns-content p {
+            margin-bottom: 1rem;
+            text-indent: 1.5em;
+        }
+
+        .columns-content p:first-child {
+            text-indent: 0;
+        }
+
+        .columns-content p:first-child::first-letter {
+            font-family: 'Old Standard TT', serif;
+            font-size: 3.5rem;
+            float: left;
+            line-height: 0.8;
+            margin-right: 0.1em;
+            margin-top: 0.1em;
+            font-weight: 700;
+        }
+
+        /* Timeline Images in Columns */
+        .timeline-image {
+            width: 100%;
+            margin: 0.8rem 0;
+            break-inside: avoid;
+        }
+
+        .timeline-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid var(--light-rule);
+        }
+
+        .timeline-image figcaption {
+            font-family: 'IM Fell English', serif;
+            font-style: italic;
+            font-size: 0.75rem;
+            color: var(--faded);
+            text-align: center;
+            margin-top: 0.3rem;
+        }
+
+        /* Itinerary Box */
+        .itinerary-box {
+            margin: 2.5rem auto;
+            max-width: 700px;
+            border: 3px double var(--rule);
+            padding: 2rem 2.5rem;
+            position: relative;
+        }
+
+        .itinerary-box::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            border: 1px solid var(--light-rule);
+            pointer-events: none;
+        }
+
+        .itinerary-box-title {
+            font-family: 'Old Standard TT', serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.3rem;
+        }
+
+        .itinerary-box-subtitle {
+            text-align: center;
+            font-family: 'IM Fell English', serif;
+            font-style: italic;
+            color: var(--faded);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .itinerary-box-rule {
+            border: none;
+            border-top: 1px solid var(--light-rule);
+            margin-bottom: 1.5rem;
+        }
+
+        .itinerary-list {
+            list-style: none;
+        }
+
+        .itinerary-list li {
+            display: flex;
+            align-items: baseline;
+            padding: 0.7rem 0;
+            border-bottom: 1px dotted var(--light-rule);
+            font-family: 'Old Standard TT', serif;
+            font-size: 1rem;
+        }
+
+        .itinerary-list li:last-child {
+            border-bottom: none;
+        }
+
+        .itin-time {
+            font-weight: 700;
+            min-width: 110px;
+            flex-shrink: 0;
+        }
+
+        .itin-dot {
+            flex-shrink: 0;
+            margin: 0 0.8rem;
+            color: var(--light-rule);
+        }
+
+        .itin-event {
+            font-family: 'IM Fell English', serif;
+        }
+
+        /* Two-column images */
+        .dual-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .dual-images figure {
+            border: 1px solid var(--light-rule);
+            padding: 0.4rem;
+        }
+
+        .dual-images img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .dual-images figcaption {
+            font-family: 'IM Fell English', serif;
+            font-style: italic;
+            font-size: 0.75rem;
+            color: var(--faded);
+            text-align: center;
+            padding-top: 0.4rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 4px double var(--rule);
+            margin-top: 2rem;
+        }
+
+        .footer-text {
+            font-family: 'IM Fell English', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--faded);
+        }
+
+        .footer-names {
+            font-family: 'Old Standard TT', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin: 0.5rem 0;
+        }
+
+        .footer-ornament {
+            font-size: 1.5rem;
+            color: var(--light-rule);
+            margin-top: 0.5rem;
+        }
+
+        .footer-bottom-rule {
+            border-top: 2px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            height: 6px;
+            margin-top: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page {
+                padding: 0 1rem;
+            }
+
+            .columns-content {
+                column-count: 1;
+            }
+
+            .dual-images {
+                grid-template-columns: 1fr;
+            }
+
+            .itinerary-box {
+                padding: 1.5rem;
+            }
+
+            .masthead-top-rule-inner {
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .masthead-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+
+        <a href="../../index.html" class="back-link">&larr; Back to Gallery</a>
+
+        <!-- Masthead -->
+        <header class="masthead">
+            <div class="masthead-top-rule">
+                <div class="masthead-top-rule-inner">
+                    <span>Est. Summer 2019</span>
+                    <span>Volume VII &middot; No. 1</span>
+                    <span>Price: One Heart</span>
+                </div>
+            </div>
+            <div class="masthead-subtitle">The Wedding Gazette presents</div>
+            <h1 class="masthead-title">Priya &amp; James</h1>
+            <div class="masthead-rule-bottom">
+                <span class="fleuron">&diams;</span>
+                <span>A Special Wedding Edition</span>
+                <span class="fleuron">&diams;</span>
+            </div>
+        </header>
+
+        <!-- Headline -->
+        <section class="headline-section">
+            <h2 class="headline">Beloved Couple to Wed in Grand Celebration<br>on the Seventeenth of October</h2>
+            <p class="subheadline">Ceremony and festivities to take place in the Year Two Thousand and Twenty-Six, bringing together family and friends for an unforgettable occasion.</p>
+        </section>
+
+        <!-- Date Banner -->
+        <div class="date-banner">
+            <div class="date-banner-date">Saturday, October 17, 2026</div>
+            <div class="date-banner-sub">Save this most auspicious date</div>
+        </div>
+
+        <!-- Countdown -->
+        <div class="countdown-banner">
+            <span class="number">206</span>
+            <span class="text">days remain until the blessed union &mdash; as reckoned on the 25th of March, 1926... er, 2026</span>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="hero-image">
+            <img src="https://picsum.photos/seed/newspaper-hero/1100/550" alt="The happy couple">
+            <p class="hero-caption">The betrothed pair, photographed on the occasion of their engagement, March 2025.</p>
+        </div>
+
+        <div class="ornament">&clubs; &diams; &hearts; &diams; &clubs;</div>
+
+        <!-- Our Story in Columns -->
+        <section class="columns-section">
+            <h3 class="columns-title">A Chronicle of Their Courtship</h3>
+            <p class="columns-subtitle">From a chance meeting over coffee to a Parisian proposal &mdash; the full account</p>
+            <hr class="columns-rule">
+            <div class="columns-content">
+                <p>It was in the summer of 2019 that fate conspired to bring together two souls at an unassuming coffee establishment in the city. Miss Priya, arriving for her customary afternoon refreshment, found herself at the counter beside one Mr. James, who had the misfortune of upending his freshly prepared latte upon the countertop. In the small chaos that followed, introductions were made, napkins were shared, and a conversation began that neither party wished to conclude.</p>
+
+                <figure class="timeline-image">
+                    <img src="https://picsum.photos/seed/newspaper-coffee/400/300" alt="The coffee shop">
+                    <figcaption>The coffee shop where it all began, Summer 1919... we mean 2019.</figcaption>
+                </figure>
+
+                <p>By the arrival of autumn that same year, the pair had arranged their first proper outing &mdash; a leisurely promenade through the Botanical Garden. Amid the changing leaves and the last warmth of the season, they discovered a shared love of conversation, long walks, and, it must be said, a mutual inability to resist dessert. Witnesses report they were last seen sharing a slice of pie at the garden cafe, laughing as though they had known each other all their lives.</p>
+
+                <p>The year 2021 marked a momentous chapter in their domestic history. Having spent the better part of two years in each other's constant company, the couple resolved to establish a shared household. The endeavor involved no small amount of negotiation regarding shelf space, the appropriate temperature for the thermostat, and whether one truly needs that many throw pillows. (The answer, this paper is informed, is yes.)</p>
+
+                <figure class="timeline-image">
+                    <img src="https://picsum.photos/seed/newspaper-paris/400/300" alt="Paris proposal">
+                    <figcaption>The Eiffel Tower, site of the now-legendary proposal, March 2025.</figcaption>
+                </figure>
+
+                <p>The most extraordinary dispatch in this chronicle arrived in March of 2025, from the City of Light itself. On a trip to Paris, France, Mr. James, having secreted a ring in his coat pocket for the better part of three anxious days, finally summoned the courage to kneel before Miss Priya at the foot of the Eiffel Tower. Through tears of unmistakable joy, she accepted. Passersby reportedly applauded. A nearby accordion player struck up a waltz.</p>
+
+                <p>And so, on the seventeenth of October in the year 2026, these two remarkable individuals shall pledge their lives to one another in the presence of their dearest family and friends. The Gazette is most honoured to report this news and extends its warmest felicitations to the couple. All are requested to save the date and prepare for an evening of merriment, fine dining, and enthusiastic dancing.</p>
+            </div>
+        </section>
+
+        <!-- Dual Images -->
+        <div class="dual-images">
+            <figure>
+                <img src="https://picsum.photos/seed/newspaper-couple1/600/400" alt="The couple">
+                <figcaption>A portrait of the couple, recently taken.</figcaption>
+            </figure>
+            <figure>
+                <img src="https://picsum.photos/seed/newspaper-couple2/600/400" alt="The couple embracing">
+                <figcaption>Celebrating the engagement, Spring 2025.</figcaption>
+            </figure>
+        </div>
+
+        <div class="ornament-small">&mdash; &sect; &mdash;</div>
+
+        <!-- Itinerary Box -->
+        <div class="itinerary-box">
+            <h3 class="itinerary-box-title">Schedule of Events</h3>
+            <p class="itinerary-box-subtitle">The Programme for the Seventeenth of October, 2026</p>
+            <hr class="itinerary-box-rule">
+            <ul class="itinerary-list">
+                <li>
+                    <span class="itin-time">10:00 AM</span>
+                    <span class="itin-dot">&middot;</span>
+                    <span class="itin-event">Getting Ready &amp; First Look</span>
+                </li>
+                <li>
+                    <span class="itin-time">2:00 PM</span>
+                    <span class="itin-dot">&middot;</span>
+                    <span class="itin-event">Wedding Ceremony</span>
+                </li>
+                <li>
+                    <span class="itin-time">3:30 PM</span>
+                    <span class="itin-dot">&middot;</span>
+                    <span class="itin-event">Cocktail Hour</span>
+                </li>
+                <li>
+                    <span class="itin-time">5:00 PM</span>
+                    <span class="itin-dot">&middot;</span>
+                    <span class="itin-event">Reception &amp; Dinner</span>
+                </li>
+                <li>
+                    <span class="itin-time">7:00 PM</span>
+                    <span class="itin-dot">&middot;</span>
+                    <span class="itin-event">First Dance &amp; Toasts</span>
+                </li>
+                <li>
+                    <span class="itin-time">9:00 PM</span>
+                    <span class="itin-dot">&middot;</span>
+                    <span class="itin-event">Dancing &amp; Grand Send-Off</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="ornament">&clubs; &diams; &hearts; &diams; &clubs;</div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-text">With love and great anticipation,</p>
+            <p class="footer-names">Priya &amp; James</p>
+            <p class="footer-text">October 17, 2026</p>
+            <div class="footer-ornament">&hearts;</div>
+            <div class="footer-bottom-rule"></div>
+        </footer>
+
+    </div>
+
+</body>
+</html>

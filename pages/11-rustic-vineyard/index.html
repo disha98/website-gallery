@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Priya & James — Save the Date</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #FAF5EF;
+      --burgundy: #722F37;
+      --olive: #6B705C;
+      --gold: #B08D57;
+      --burgundy-light: #8B4049;
+      --cream-dark: #F0E8DC;
+    }
+
+    body {
+      font-family: 'Source Serif Pro', Georgia, serif;
+      background-color: var(--cream);
+      color: var(--olive);
+      line-height: 1.7;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      color: var(--burgundy);
+      font-weight: 700;
+    }
+
+    a { color: var(--burgundy); }
+
+    .back-link {
+      display: inline-block;
+      padding: 14px 28px;
+      font-family: 'Source Serif Pro', serif;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--olive);
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--burgundy); }
+
+    .top-bar {
+      text-align: left;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+
+    /* ---- Hero ---- */
+    .hero {
+      text-align: center;
+      padding: 60px 24px 50px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      font-family: 'Source Serif Pro', serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 7vw, 64px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .hero h1 .amp {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold);
+    }
+
+    .hero-date {
+      font-family: 'Source Serif Pro', serif;
+      font-size: 20px;
+      color: var(--burgundy);
+      margin-top: 18px;
+      letter-spacing: 1px;
+    }
+
+    .hero-tagline {
+      font-style: italic;
+      color: var(--olive);
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    .hero-img {
+      display: block;
+      width: 320px;
+      max-width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin: 32px auto 0;
+      box-shadow: 0 4px 20px rgba(114, 47, 55, 0.12);
+    }
+
+    /* ---- Decorative Divider ---- */
+    .divider {
+      text-align: center;
+      padding: 28px 0;
+      color: var(--gold);
+      font-size: 18px;
+      letter-spacing: 6px;
+      user-select: none;
+    }
+
+    /* ---- Section ---- */
+    .section {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 20px 24px 40px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      color: var(--gold);
+      margin-bottom: 36px;
+    }
+
+    /* ---- Photo Row ---- */
+    .photo-row {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 32px 0;
+    }
+
+    .photo-row img {
+      width: 200px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 3px 14px rgba(114, 47, 55, 0.10);
+    }
+
+    /* ---- Timeline (horizontal scroll cards) ---- */
+    .timeline-scroll {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 10px 4px 20px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .timeline-scroll::-webkit-scrollbar {
+      height: 6px;
+    }
+    .timeline-scroll::-webkit-scrollbar-track {
+      background: var(--cream-dark);
+      border-radius: 3px;
+    }
+    .timeline-scroll::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 3px;
+    }
+
+    .timeline-card {
+      flex: 0 0 210px;
+      scroll-snap-align: start;
+      background: #fff;
+      border: 1px solid var(--cream-dark);
+      border-radius: 8px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(107, 112, 92, 0.07);
+    }
+
+    .timeline-card .year {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 14px;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .timeline-card .event-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 16px;
+      color: var(--burgundy);
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+
+    .timeline-card .event-desc {
+      font-size: 14px;
+      color: var(--olive);
+      line-height: 1.5;
+    }
+
+    /* ---- Itinerary Table ---- */
+    .itinerary-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    .itinerary-table tr {
+      border-bottom: 1px solid var(--cream-dark);
+    }
+
+    .itinerary-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .itinerary-table td {
+      padding: 16px 12px;
+      vertical-align: top;
+    }
+
+    .itinerary-table .time-col {
+      width: 120px;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 15px;
+      color: var(--burgundy);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .itinerary-table .event-col {
+      font-size: 16px;
+      color: var(--olive);
+    }
+
+    .itinerary-wrapper {
+      border: 1px solid var(--cream-dark);
+      border-radius: 8px;
+      padding: 12px 20px;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(107, 112, 92, 0.05);
+    }
+
+    /* ---- Countdown ---- */
+    .countdown-section {
+      text-align: center;
+      padding: 40px 24px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .countdown-boxes {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .countdown-box {
+      background: #fff;
+      border: 1px solid var(--cream-dark);
+      border-radius: 8px;
+      padding: 20px 24px;
+      min-width: 90px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(107, 112, 92, 0.06);
+    }
+
+    .countdown-box .number {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 36px;
+      color: var(--burgundy);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .countdown-box .label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gold);
+      margin-top: 6px;
+    }
+
+    .countdown-note {
+      font-size: 14px;
+      font-style: italic;
+      color: var(--olive);
+      margin-top: 20px;
+    }
+
+    /* ---- RSVP / Footer ---- */
+    .footer-section {
+      text-align: center;
+      padding: 40px 24px 60px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .footer-section h2 {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .footer-section p {
+      font-size: 16px;
+      color: var(--olive);
+      margin-bottom: 8px;
+    }
+
+    .footer-note {
+      margin-top: 40px;
+      font-size: 13px;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 600px) {
+      .photo-row img {
+        width: 160px;
+        height: 120px;
+      }
+      .itinerary-table .time-col {
+        width: 90px;
+        font-size: 14px;
+      }
+      .countdown-box .number {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="../../index.html" class="back-link">&larr; Back to Gallery</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <p class="hero-label">Save the Date</p>
+    <h1>Priya <span class="amp">&amp;</span> James</h1>
+    <p class="hero-date">Saturday, October 17, 2026</p>
+    <p class="hero-tagline">A celebration of love among the vineyards</p>
+    <img
+      src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&h=340&fit=crop"
+      alt="Couple portrait"
+      class="hero-img"
+    >
+  </section>
+
+  <div class="divider">&bull; &bull; &bull; &bull; &bull;</div>
+
+  <!-- Our Story Timeline -->
+  <section class="section">
+    <h2 class="section-title">Our Story</h2>
+    <p class="section-subtitle">How It All Began</p>
+
+    <div class="timeline-scroll">
+      <div class="timeline-card">
+        <p class="year">Summer 2019</p>
+        <p class="event-title">A Coffee Shop Meet</p>
+        <p class="event-desc">Two strangers, one small table, and a conversation that never really ended.</p>
+      </div>
+      <div class="timeline-card">
+        <p class="year">Fall 2019</p>
+        <p class="event-title">First Date</p>
+        <p class="event-desc">A perfect autumn afternoon wandering through the botanical garden.</p>
+      </div>
+      <div class="timeline-card">
+        <p class="year">2021</p>
+        <p class="event-title">Moving In</p>
+        <p class="event-desc">Boxes, laughter, and a place to finally call ours.</p>
+      </div>
+      <div class="timeline-card">
+        <p class="year">March 2025</p>
+        <p class="event-title">The Proposal</p>
+        <p class="event-desc">Under the lights of Paris, James got down on one knee. She said yes.</p>
+      </div>
+      <div class="timeline-card">
+        <p class="year">October 2026</p>
+        <p class="event-title">The Wedding</p>
+        <p class="event-desc">The next chapter begins surrounded by those we love most.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">&mdash; &middot; &mdash; &middot; &mdash;</div>
+
+  <!-- Photos -->
+  <section class="section">
+    <div class="photo-row">
+      <img
+        src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=300&h=220&fit=crop"
+        alt="Wedding rings"
+      >
+      <img
+        src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=300&h=220&fit=crop"
+        alt="Flowers and bouquet"
+      >
+      <img
+        src="https://images.unsplash.com/photo-1519167758481-83f550bb01e5?w=300&h=220&fit=crop"
+        alt="Wedding venue"
+      >
+    </div>
+  </section>
+
+  <div class="divider">&bull; &bull; &bull; &bull; &bull;</div>
+
+  <!-- Wedding Day Itinerary -->
+  <section class="section">
+    <h2 class="section-title">The Wedding Day</h2>
+    <p class="section-subtitle">October 17, 2026</p>
+
+    <div class="itinerary-wrapper">
+      <table class="itinerary-table">
+        <tr>
+          <td class="time-col">10:00 AM</td>
+          <td class="event-col">Getting Ready &amp; First Look</td>
+        </tr>
+        <tr>
+          <td class="time-col">2:00 PM</td>
+          <td class="event-col">Wedding Ceremony</td>
+        </tr>
+        <tr>
+          <td class="time-col">3:30 PM</td>
+          <td class="event-col">Cocktail Hour</td>
+        </tr>
+        <tr>
+          <td class="time-col">5:00 PM</td>
+          <td class="event-col">Reception &amp; Dinner</td>
+        </tr>
+        <tr>
+          <td class="time-col">7:00 PM</td>
+          <td class="event-col">First Dance &amp; Toasts</td>
+        </tr>
+        <tr>
+          <td class="time-col">9:00 PM</td>
+          <td class="event-col">Dancing &amp; Send-Off</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <div class="divider">&mdash; &middot; &mdash; &middot; &mdash;</div>
+
+  <!-- Countdown -->
+  <section class="countdown-section">
+    <h2 class="section-title">Counting Down</h2>
+    <p class="section-subtitle">Until We Say &ldquo;I Do&rdquo;</p>
+
+    <div class="countdown-boxes">
+      <div class="countdown-box">
+        <p class="number">206</p>
+        <p class="label">Days</p>
+      </div>
+      <div class="countdown-box">
+        <p class="number">14</p>
+        <p class="label">Hours</p>
+      </div>
+      <div class="countdown-box">
+        <p class="number">0</p>
+        <p class="label">Minutes</p>
+      </div>
+    </div>
+    <p class="countdown-note">As of March 25, 2026 &mdash; but who&rsquo;s counting?</p>
+  </section>
+
+  <div class="divider">&bull; &bull; &bull; &bull; &bull;</div>
+
+  <!-- Footer -->
+  <section class="footer-section">
+    <h2>We Can&rsquo;t Wait</h2>
+    <p>To celebrate this day with you.</p>
+    <p>More details to follow &mdash; for now, save the date!</p>
+
+    <p class="footer-note">Priya &amp; James &bull; October 17, 2026</p>
+  </section>
+
+</body>
+</html>

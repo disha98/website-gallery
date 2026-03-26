@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priya & James — Save the Date</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Raleway:ital,wght@0,200;0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --black: #0D0D0D;
+            --gold: #C9A84C;
+            --gold-dim: #A68A3A;
+            --gold-light: #E0C872;
+            --cream: #F5EEDD;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--black);
+            color: var(--cream);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poiret One', cursive;
+            letter-spacing: 0.15em;
+        }
+
+        /* Back to Gallery */
+        .back-link {
+            position: fixed;
+            top: 1.5rem;
+            left: 1.5rem;
+            z-index: 100;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-decoration: none;
+            border: 1px solid var(--gold-dim);
+            padding: 0.45rem 1rem;
+            background: rgba(13,13,13,0.9);
+        }
+        .back-link:hover { background: var(--gold); color: var(--black); }
+
+        /* ===== DECORATIVE HELPERS ===== */
+
+        /* Art Deco Divider */
+        .deco-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            margin: 2rem auto;
+            max-width: 300px;
+        }
+        .deco-divider::before,
+        .deco-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--gold);
+        }
+        .deco-divider .diamond {
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            transform: rotate(45deg);
+            flex-shrink: 0;
+        }
+
+        /* Chevron Divider */
+        .chevron-divider {
+            width: 100%;
+            max-width: 600px;
+            margin: 4rem auto;
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+        }
+        .chevron-divider span {
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-bottom: 10px solid var(--gold);
+        }
+
+        /* Sunburst Pattern */
+        .sunburst {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--gold) 0deg, transparent 8deg, transparent 12deg,
+                var(--gold) 12deg, transparent 20deg, transparent 24deg,
+                var(--gold) 24deg, transparent 32deg, transparent 36deg,
+                var(--gold) 36deg, transparent 44deg, transparent 48deg,
+                var(--gold) 48deg, transparent 56deg, transparent 60deg,
+                var(--gold) 60deg, transparent 68deg, transparent 72deg,
+                var(--gold) 72deg, transparent 80deg, transparent 84deg,
+                var(--gold) 84deg, transparent 92deg, transparent 96deg,
+                var(--gold) 96deg, transparent 104deg, transparent 108deg,
+                var(--gold) 108deg, transparent 116deg, transparent 120deg,
+                var(--gold) 120deg, transparent 128deg, transparent 132deg,
+                var(--gold) 132deg, transparent 140deg, transparent 144deg,
+                var(--gold) 144deg, transparent 152deg, transparent 156deg,
+                var(--gold) 156deg, transparent 164deg, transparent 168deg,
+                var(--gold) 168deg, transparent 176deg, transparent 180deg,
+                var(--gold) 180deg, transparent 188deg, transparent 192deg,
+                var(--gold) 192deg, transparent 200deg, transparent 204deg,
+                var(--gold) 204deg, transparent 212deg, transparent 216deg,
+                var(--gold) 216deg, transparent 224deg, transparent 228deg,
+                var(--gold) 228deg, transparent 236deg, transparent 240deg,
+                var(--gold) 240deg, transparent 248deg, transparent 252deg,
+                var(--gold) 252deg, transparent 260deg, transparent 264deg,
+                var(--gold) 264deg, transparent 272deg, transparent 276deg,
+                var(--gold) 276deg, transparent 284deg, transparent 288deg,
+                var(--gold) 288deg, transparent 296deg, transparent 300deg,
+                var(--gold) 300deg, transparent 308deg, transparent 312deg,
+                var(--gold) 312deg, transparent 320deg, transparent 324deg,
+                var(--gold) 324deg, transparent 332deg, transparent 336deg,
+                var(--gold) 336deg, transparent 344deg, transparent 348deg,
+                var(--gold) 348deg, transparent 356deg, transparent 360deg
+            );
+            opacity: 0.35;
+            margin: 0 auto;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%; transform: translateX(-50%);
+            width: 1px;
+            height: 80px;
+            background: linear-gradient(to bottom, transparent, var(--gold));
+        }
+
+        .hero-top-ornament {
+            margin-top: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 10vw, 8rem);
+            line-height: 1;
+            color: var(--gold);
+            margin-bottom: 0.2em;
+        }
+        .hero .amp {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--gold-dim);
+            display: block;
+            margin: 0.3em 0;
+            letter-spacing: 0.5em;
+        }
+        .hero-date-box {
+            margin-top: 2rem;
+            border: 1px solid var(--gold);
+            padding: 1rem 3rem;
+            position: relative;
+        }
+        .hero-date-box::before {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            border: 1px solid rgba(201,168,76,0.3);
+        }
+        .hero-date-box h2 {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            letter-spacing: 0.25em;
+            color: var(--cream);
+            font-weight: 400;
+        }
+        .hero-venue {
+            margin-top: 1.5rem;
+            font-weight: 200;
+            font-size: 0.95rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold-dim);
+        }
+
+        /* ===== COUPLE PHOTO — Geometric Frame ===== */
+        .photo-section {
+            padding: 6rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .geo-frame {
+            position: relative;
+            display: inline-block;
+        }
+        .geo-frame img {
+            width: clamp(280px, 50vw, 450px);
+            height: clamp(350px, 60vw, 560px);
+            object-fit: cover;
+            display: block;
+            filter: sepia(20%) contrast(1.05);
+        }
+        /* Stepped geometric frame */
+        .geo-frame::before {
+            content: '';
+            position: absolute;
+            inset: -12px;
+            border: 2px solid var(--gold);
+        }
+        .geo-frame::after {
+            content: '';
+            position: absolute;
+            inset: -24px;
+            border: 1px solid var(--gold-dim);
+        }
+        .geo-frame-outer {
+            position: absolute;
+            inset: -36px;
+            border: 1px solid rgba(201,168,76,0.25);
+            pointer-events: none;
+        }
+        /* Corner accents */
+        .geo-frame .corner {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-color: var(--gold);
+            border-style: solid;
+            z-index: 2;
+        }
+        .geo-frame .corner.tl { top: -28px; left: -28px; border-width: 2px 0 0 2px; }
+        .geo-frame .corner.tr { top: -28px; right: -28px; border-width: 2px 2px 0 0; }
+        .geo-frame .corner.bl { bottom: -28px; left: -28px; border-width: 0 0 2px 2px; }
+        .geo-frame .corner.br { bottom: -28px; right: -28px; border-width: 0 2px 2px 0; }
+
+        .photo-caption {
+            margin-top: 3rem;
+            font-family: 'Poiret One', cursive;
+            font-size: 1.4rem;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline-section {
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        .timeline-section h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 600px;
+            margin: 3rem auto 0;
+            padding: 2rem 0;
+        }
+        /* Center vertical line */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 1px;
+            background: var(--gold-dim);
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            position: relative;
+            padding: 1.8rem 0;
+            text-align: center;
+        }
+        /* Gold dot on line */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 1.8rem;
+            left: 50%;
+            width: 12px;
+            height: 12px;
+            background: var(--gold);
+            border-radius: 50%;
+            transform: translate(-50%, 0);
+            z-index: 2;
+            box-shadow: 0 0 0 4px var(--black), 0 0 0 5px var(--gold-dim);
+        }
+        .timeline-year {
+            font-family: 'Poiret One', cursive;
+            font-size: 1.3rem;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            margin-bottom: 0.4rem;
+            padding-top: 1.8rem;
+        }
+        .timeline-event {
+            font-weight: 300;
+            font-size: 1rem;
+            color: var(--cream);
+            letter-spacing: 0.05em;
+        }
+        .timeline-detail {
+            font-weight: 200;
+            font-size: 0.85rem;
+            color: rgba(245,238,221,0.5);
+            margin-top: 0.3rem;
+            font-style: italic;
+        }
+
+        /* ===== ITINERARY ===== */
+        .itinerary-section {
+            padding: 6rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .itinerary-section h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .itinerary-card {
+            max-width: 520px;
+            width: 100%;
+            border: 2px solid var(--gold);
+            padding: 3rem 2.5rem;
+            text-align: center;
+            position: relative;
+            margin-top: 2rem;
+            background: rgba(201,168,76,0.03);
+        }
+        .itinerary-card::before {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border: 1px solid rgba(201,168,76,0.25);
+        }
+        .itinerary-card h3 {
+            font-size: 1.6rem;
+            color: var(--gold);
+            letter-spacing: 0.2em;
+            margin-bottom: 2rem;
+        }
+        .itinerary-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(201,168,76,0.15);
+        }
+        .itinerary-item:last-child { border-bottom: none; }
+        .itinerary-time {
+            font-family: 'Poiret One', cursive;
+            font-size: 1.3rem;
+            color: var(--gold);
+            letter-spacing: 0.15em;
+            margin-bottom: 0.2rem;
+        }
+        .itinerary-event {
+            font-weight: 300;
+            font-size: 0.95rem;
+            letter-spacing: 0.08em;
+            color: var(--cream);
+        }
+
+        /* ===== GALLERY PHOTOS ===== */
+        .gallery-section {
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 800px;
+            width: 100%;
+            margin-top: 2rem;
+        }
+        .gallery-img {
+            position: relative;
+            overflow: hidden;
+        }
+        .gallery-img::before {
+            content: '';
+            position: absolute;
+            inset: 6px;
+            border: 1px solid rgba(201,168,76,0.4);
+            z-index: 2;
+            pointer-events: none;
+        }
+        .gallery-img img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            filter: sepia(15%);
+        }
+
+        /* ===== CLOSING ===== */
+        .closing {
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+        .closing h2 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: var(--gold);
+            line-height: 1.1;
+        }
+        .closing p {
+            margin-top: 1.5rem;
+            font-weight: 200;
+            font-size: 1rem;
+            letter-spacing: 0.15em;
+            color: var(--gold-dim);
+        }
+
+        /* Geometric BG patterns on body */
+        .geo-bg-section {
+            position: relative;
+        }
+        .geo-bg-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.04;
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    var(--gold) 0px, var(--gold) 1px,
+                    transparent 1px, transparent 60px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    var(--gold) 0px, var(--gold) 1px,
+                    transparent 1px, transparent 60px
+                );
+            pointer-events: none;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+            .gallery-img img { height: 180px; }
+            .itinerary-card { padding: 2rem 1.2rem; }
+            .hero-date-box { padding: 0.8rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<a href="../../index.html" class="back-link">&larr; Gallery</a>
+
+<!-- HERO -->
+<section class="hero geo-bg-section">
+    <div class="hero-top-ornament">
+        <div class="sunburst"></div>
+    </div>
+
+    <div class="deco-divider" style="margin-top: 2.5rem;">
+        <span class="diamond"></span>
+    </div>
+
+    <h1>Priya</h1>
+    <span class="amp">&amp;</span>
+    <h1>James</h1>
+
+    <div class="deco-divider">
+        <span class="diamond"></span>
+    </div>
+
+    <div class="hero-date-box">
+        <h2>Saturday, October 17, 2026</h2>
+    </div>
+
+    <p class="hero-venue">Request the honour of your presence</p>
+</section>
+
+<!-- CHEVRON -->
+<div class="chevron-divider">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<!-- COUPLE PHOTO -->
+<section class="photo-section">
+    <div class="geo-frame">
+        <img src="https://picsum.photos/seed/decocouple/450/560" alt="Priya and James">
+        <div class="geo-frame-outer"></div>
+        <span class="corner tl"></span>
+        <span class="corner tr"></span>
+        <span class="corner bl"></span>
+        <span class="corner br"></span>
+    </div>
+    <p class="photo-caption">Together Since 2019</p>
+</section>
+
+<!-- DECO DIVIDER -->
+<div class="deco-divider">
+    <span class="diamond"></span>
+</div>
+
+<!-- TIMELINE -->
+<section class="timeline-section geo-bg-section">
+    <h2>Our Journey</h2>
+    <div class="deco-divider"><span class="diamond"></span></div>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-year">Summer 2019</div>
+            <div class="timeline-event">Met at a Coffee Shop</div>
+            <div class="timeline-detail">A chance encounter that changed everything</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-year">Fall 2019</div>
+            <div class="timeline-event">First Date at the Botanical Garden</div>
+            <div class="timeline-detail">Wandering paths and falling in love</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-year">2021</div>
+            <div class="timeline-event">Moved In Together</div>
+            <div class="timeline-detail">Building a home, building a life</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-year">March 2025</div>
+            <div class="timeline-event">Trip to Paris &mdash; The Proposal</div>
+            <div class="timeline-detail">Under Parisian skies, James asked. She said yes.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-year">October 2026</div>
+            <div class="timeline-event">The Wedding</div>
+            <div class="timeline-detail">The beginning of forever</div>
+        </div>
+    </div>
+</section>
+
+<!-- CHEVRON -->
+<div class="chevron-divider">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<!-- GALLERY -->
+<section class="gallery-section">
+    <div class="gallery-grid">
+        <div class="gallery-img"><img src="https://picsum.photos/seed/deco01/300/250" alt="Photo 1"></div>
+        <div class="gallery-img"><img src="https://picsum.photos/seed/deco02/300/250" alt="Photo 2"></div>
+        <div class="gallery-img"><img src="https://picsum.photos/seed/deco03/300/250" alt="Photo 3"></div>
+        <div class="gallery-img"><img src="https://picsum.photos/seed/deco04/300/250" alt="Photo 4"></div>
+        <div class="gallery-img"><img src="https://picsum.photos/seed/deco05/300/250" alt="Photo 5"></div>
+        <div class="gallery-img"><img src="https://picsum.photos/seed/deco06/300/250" alt="Photo 6"></div>
+    </div>
+</section>
+
+<!-- DECO DIVIDER -->
+<div class="deco-divider">
+    <span class="diamond"></span>
+</div>
+
+<!-- ITINERARY -->
+<section class="itinerary-section">
+    <h2>The Celebration</h2>
+    <div class="deco-divider"><span class="diamond"></span></div>
+
+    <div class="itinerary-card">
+        <h3>Order of Events</h3>
+        <div class="itinerary-item">
+            <div class="itinerary-time">10:00 AM</div>
+            <div class="itinerary-event">Getting Ready &amp; First Look</div>
+        </div>
+        <div class="itinerary-item">
+            <div class="itinerary-time">2:00 PM</div>
+            <div class="itinerary-event">Wedding Ceremony</div>
+        </div>
+        <div class="itinerary-item">
+            <div class="itinerary-time">3:30 PM</div>
+            <div class="itinerary-event">Cocktail Hour</div>
+        </div>
+        <div class="itinerary-item">
+            <div class="itinerary-time">5:00 PM</div>
+            <div class="itinerary-event">Reception &amp; Dinner</div>
+        </div>
+        <div class="itinerary-item">
+            <div class="itinerary-time">7:00 PM</div>
+            <div class="itinerary-event">First Dance &amp; Toasts</div>
+        </div>
+        <div class="itinerary-item">
+            <div class="itinerary-time">9:00 PM</div>
+            <div class="itinerary-event">Dancing &amp; Send-Off</div>
+        </div>
+    </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing">
+    <div class="sunburst" style="margin-bottom: 2rem;"></div>
+    <h2>Save the Date</h2>
+    <p>October Seventeenth, Two Thousand Twenty-Six</p>
+    <div class="deco-divider" style="margin-top: 2.5rem;"><span class="diamond"></span></div>
+</section>
+
+</body>
+</html>
