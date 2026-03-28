@@ -395,6 +395,47 @@ body {
   padding: 0.3em 0.6em;
 }
 
+/* 21 - Luxe Editorial */
+.preview-21 {
+  background: #FAFAF8;
+}
+.preview-21::after {
+  content: 'Studio Aura';
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #C9A96E;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* 22 - Monochrome Luxe */
+.preview-22 {
+  background: #FFFFFF;
+}
+.preview-22::after {
+  content: 'AURA';
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #000000;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  border-bottom: 2px solid #C9A96E;
+  padding-bottom: 0.2em;
+}
+
+/* 23 - Dark Luxe */
+.preview-23 {
+  background: #0A0A0A;
+}
+.preview-23::after {
+  content: 'Studio Aura';
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #C9A96E;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+}
+
 /* Footer */
 .footer {
   text-align: center;
