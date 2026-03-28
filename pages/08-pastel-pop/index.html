@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Aura — Dance &amp; Fitness Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #FFF5FC;
+      --text: #2D2D3F;
+      --pink: #FF8FAB;
+      --lilac: #C3A6FF;
+      --mint: #7DFFC2;
+      --yellow: #FFE156;
+      --card: #FFFFFF;
+      --pink-light: #FFD6E3;
+      --lilac-light: #E8DBFF;
+      --mint-light: #C8FFE5;
+      --yellow-light: #FFF3C4;
+      --radius: 16px;
+      --radius-lg: 24px;
+      --shadow-pink: 0 8px 30px rgba(255, 143, 171, 0.25);
+      --shadow-lilac: 0 8px 30px rgba(195, 166, 255, 0.25);
+      --shadow-mint: 0 8px 30px rgba(125, 255, 194, 0.25);
+      --shadow-yellow: 0 8px 30px rgba(255, 225, 86, 0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 400;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    a { color: var(--pink); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== BACK LINK ===== */
+    .back-link {
+      display: inline-block;
+      padding: 10px 22px;
+      margin: 20px 24px;
+      background: var(--card);
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--pink);
+      box-shadow: 0 4px 12px rgba(255, 143, 171, 0.15);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .back-link:hover {
+      text-decoration: none;
+      box-shadow: var(--shadow-pink);
+      transform: translateY(-2px);
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      background: rgba(255, 245, 252, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid var(--pink-light);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .nav-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, var(--pink), var(--lilac));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+    .nav-links a {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      background: var(--card);
+      border: 2px solid transparent;
+    }
+    .nav-links a:hover {
+      text-decoration: none;
+      border-color: var(--pink);
+      color: var(--pink);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, var(--pink-light), var(--lilac-light), var(--mint-light));
+      padding: 80px 0 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 250px;
+      height: 250px;
+      background: var(--yellow);
+      border-radius: 50%;
+      opacity: 0.2;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: -40px;
+      width: 200px;
+      height: 200px;
+      background: var(--mint);
+      border-radius: 50%;
+      opacity: 0.15;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-sparkle {
+      font-size: 1rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--pink);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      background: linear-gradient(135deg, var(--pink), var(--lilac));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+    .hero-tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      color: var(--text);
+      max-width: 550px;
+      margin: 0 auto 32px;
+      font-weight: 600;
+    }
+    .hero-img {
+      width: min(90%, 500px);
+      margin: 0 auto;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-pink);
+    }
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .hero-pill {
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .hero-pill--pink { background: var(--pink-light); }
+    .hero-pill--lilac { background: var(--lilac-light); }
+    .hero-pill--mint { background: var(--mint-light); }
+    .hero-pill--yellow { background: var(--yellow-light); }
+
+    /* ===== SECTION SHARED ===== */
+    section { padding: 72px 0; }
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-bottom: 12px;
+    }
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.05rem;
+      color: #7A7A8E;
+      max-width: 580px;
+      margin: 0 auto 40px;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--pink), var(--lilac));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ===== ABOUT ===== */
+    .about { background: var(--card); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .about-img {
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lilac);
+    }
+    .about-text p {
+      margin-bottom: 16px;
+      font-size: 1.02rem;
+    }
+    .about-address {
+      display: inline-block;
+      background: var(--lilac-light);
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .feature-block {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+      text-align: center;
+    }
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      font-size: 1.4rem;
+    }
+    .feature-icon--pink { background: var(--pink-light); }
+    .feature-icon--lilac { background: var(--lilac-light); }
+    .feature-icon--mint { background: var(--mint-light); }
+    .feature-label {
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    /* ===== DANCE FORMS GRID ===== */
+    .forms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .form-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .form-card__accent {
+      height: 6px;
+    }
+    .form-card__accent--pink { background: var(--pink); }
+    .form-card__accent--lilac { background: var(--lilac); }
+    .form-card__accent--mint { background: var(--mint); }
+    .form-card__accent--yellow { background: var(--yellow); }
+    .form-card__body { padding: 24px; }
+    .form-card__title {
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+    .form-card__level {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .level--beginner { background: var(--mint-light); color: #1a6b42; }
+    .level--intermediate { background: var(--yellow-light); color: #8a6d00; }
+    .level--advanced { background: var(--pink-light); color: #a0365a; }
+    .level--all { background: var(--lilac-light); color: #5a3d8a; }
+    .form-card__desc {
+      font-size: 0.92rem;
+      color: #7A7A8E;
+      margin-bottom: 12px;
+    }
+    .form-card details {
+      border-top: 1px solid #f0e8f5;
+      padding-top: 10px;
+    }
+    .form-card summary {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--pink);
+      list-style: none;
+    }
+    .form-card summary::-webkit-details-marker { display: none; }
+    .form-card summary::before {
+      content: '+ ';
+    }
+    .form-card details[open] summary::before {
+      content: '- ';
+    }
+    .form-card details p {
+      font-size: 0.85rem;
+      color: #7A7A8E;
+      margin-top: 8px;
+      line-height: 1.6;
+    }
+    .form-card__img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    /* ===== SCHEDULE — CSS-ONLY TABS ===== */
+    .schedule-section { background: var(--card); }
+
+    .tabs { position: relative; }
+    .tabs input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .tab-labels {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+    .tab-labels label {
+      display: inline-block;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: 2px solid transparent;
+      color: var(--text);
+      background: var(--bg);
+    }
+    .tab-panels { position: relative; min-height: 300px; }
+    .tab-panel {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    /* Tab colors */
+    #tab-mon:checked ~ .tab-labels label[for="tab-mon"] { background: var(--pink-light); border-color: var(--pink); }
+    #tab-tue:checked ~ .tab-labels label[for="tab-tue"] { background: var(--lilac-light); border-color: var(--lilac); }
+    #tab-wed:checked ~ .tab-labels label[for="tab-wed"] { background: var(--mint-light); border-color: #4dcc8f; }
+    #tab-thu:checked ~ .tab-labels label[for="tab-thu"] { background: var(--yellow-light); border-color: var(--yellow); }
+    #tab-fri:checked ~ .tab-labels label[for="tab-fri"] { background: var(--pink-light); border-color: var(--pink); }
+    #tab-sat:checked ~ .tab-labels label[for="tab-sat"] { background: var(--lilac-light); border-color: var(--lilac); }
+    #tab-sun:checked ~ .tab-labels label[for="tab-sun"] { background: var(--mint-light); border-color: #4dcc8f; }
+
+    #tab-mon:checked ~ .tab-panels .panel-mon,
+    #tab-tue:checked ~ .tab-panels .panel-tue,
+    #tab-wed:checked ~ .tab-panels .panel-wed,
+    #tab-thu:checked ~ .tab-panels .panel-thu,
+    #tab-fri:checked ~ .tab-panels .panel-fri,
+    #tab-sat:checked ~ .tab-panels .panel-sat,
+    #tab-sun:checked ~ .tab-panels .panel-sun {
+      display: block;
+      position: relative;
+    }
+
+    .class-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .class-card {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 18px;
+      border-left: 4px solid var(--pink);
+    }
+    .class-card--lilac { border-left-color: var(--lilac); }
+    .class-card--mint { border-left-color: var(--mint); }
+    .class-card--yellow { border-left-color: var(--yellow); }
+    .class-card__time {
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--pink);
+      margin-bottom: 4px;
+    }
+    .class-card__name {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 2px;
+    }
+    .class-card__instructor {
+      font-size: 0.82rem;
+      color: #7A7A8E;
+    }
+
+    /* ===== WORKSHOPS ===== */
+    .workshops-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .workshop-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .workshop-card__banner {
+      height: 10px;
+    }
+    .workshop-card__body { padding: 24px; }
+    .workshop-card__date {
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .workshop-card__title {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+    .workshop-card__desc {
+      font-size: 0.92rem;
+      color: #7A7A8E;
+      margin-bottom: 12px;
+    }
+    .workshop-card__price {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--pink);
+    }
+
+    /* ===== GALLERY ROW ===== */
+    .gallery-row {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 8px 0 20px;
+      scroll-snap-type: x mandatory;
+    }
+    .gallery-row img {
+      flex: 0 0 280px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      scroll-snap-align: start;
+    }
+    .gallery-row img:nth-child(1) { box-shadow: var(--shadow-pink); }
+    .gallery-row img:nth-child(2) { box-shadow: var(--shadow-lilac); }
+    .gallery-row img:nth-child(3) { box-shadow: var(--shadow-mint); }
+    .gallery-row img:nth-child(4) { box-shadow: var(--shadow-yellow); }
+
+    /* ===== FAQ ===== */
+    .faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .faq-item {
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .faq-item:nth-child(1) { border-left: 4px solid var(--pink); }
+    .faq-item:nth-child(2) { border-left: 4px solid var(--lilac); }
+    .faq-item:nth-child(3) { border-left: 4px solid var(--mint); }
+    .faq-item:nth-child(4) { border-left: 4px solid var(--yellow); }
+    .faq-item:nth-child(5) { border-left: 4px solid var(--pink); }
+    .faq-item:nth-child(6) { border-left: 4px solid var(--lilac); }
+    .faq-item summary {
+      padding: 18px 24px;
+      cursor: pointer;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      list-style: none;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      float: right;
+      font-size: 1.3rem;
+      color: var(--pink);
+      font-weight: 700;
+    }
+    .faq-item[open] summary::after { content: '-'; }
+    .faq-item p {
+      padding: 0 24px 18px;
+      font-size: 0.95rem;
+      color: #7A7A8E;
+      line-height: 1.7;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-section {
+      background: linear-gradient(135deg, var(--pink-light), var(--lilac-light));
+      text-align: center;
+    }
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      margin: 28px 0;
+    }
+    .contact-item {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px 28px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    .contact-item__label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #7A7A8E;
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+    .contact-item__value {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+    .gradient-btn {
+      display: inline-block;
+      padding: 14px 40px;
+      background: linear-gradient(135deg, var(--pink), var(--lilac));
+      color: #fff;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: var(--shadow-pink);
+      margin-top: 12px;
+    }
+    .gradient-btn:hover {
+      text-decoration: none;
+      opacity: 0.9;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.7);
+      padding: 32px 0;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+    footer a { color: var(--pink-light); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .forms-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+      .features { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .forms-grid { grid-template-columns: 1fr; }
+      .features { grid-template-columns: 1fr; }
+      .class-grid { grid-template-columns: 1fr; }
+      .tab-labels { gap: 6px; }
+      .tab-labels label { padding: 8px 14px; font-size: 0.8rem; }
+      .hero { padding: 50px 0 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="../../index.html" class="back-link">&#8592; Back to Gallery</a>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-inner">
+      <div class="nav-logo">Studio Aura</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#workshops">Workshops</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-content">
+      <p class="hero-sparkle">&#10026; Dance &amp; Fitness Studio &#10026;</p>
+      <h1>Studio Aura</h1>
+      <p class="hero-tagline">Where every step sparkles. Dance, move, glow &#10024;</p>
+      <img
+        src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=600&h=350&fit=crop"
+        alt="Dancers in a bright studio"
+        class="hero-img"
+      >
+      <div class="hero-pills">
+        <span class="hero-pill hero-pill--pink">9 Dance Styles</span>
+        <span class="hero-pill hero-pill--lilac">Expert Instructors</span>
+        <span class="hero-pill hero-pill--mint">All Levels Welcome</span>
+        <span class="hero-pill hero-pill--yellow">Kids &amp; Adults</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="section-title"><span class="gradient-text">About Us</span></h2>
+      <p class="section-subtitle">A space where joy meets movement and every body belongs.</p>
+
+      <div class="about-grid">
+        <img
+          src="../../images/studio-reception.png"
+          alt="Studio Aura reception area"
+          class="about-img"
+        >
+        <div class="about-text">
+          <span class="about-address">&#128205; 247 Movement Lane, Arts District, Downtown</span>
+          <p>Welcome to Studio Aura! We're a bubbly, inclusive dance and fitness studio that believes moving your body should feel like magic. Whether you're a total beginner or a seasoned performer, our bright and airy space is your happy place.</p>
+          <p>Our vibrant community of dancers, movers, and shakers comes together every day to learn, laugh, and grow. With world-class instructors and a schedule packed with everything from ballet to Bollywood, there's always something new to try!</p>
+
+          <div class="features">
+            <div class="feature-block">
+              <div class="feature-icon feature-icon--pink">&#128131;</div>
+              <div class="feature-label">Pro Instructors</div>
+            </div>
+            <div class="feature-block">
+              <div class="feature-icon feature-icon--lilac">&#127925;</div>
+              <div class="feature-label">Premium Sound</div>
+            </div>
+            <div class="feature-block">
+              <div class="feature-icon feature-icon--mint">&#10024;</div>
+              <div class="feature-label">Sprung Floors</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGE GALLERY ROW -->
+  <section style="padding: 32px 0;">
+    <div class="container">
+      <div class="gallery-row">
+        <img src="../../images/dance-studio.png" alt="Dance studio space">
+        <img src="https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=350&h=250&fit=crop" alt="Dancers performing">
+        <img src="../../images/ballet-dancer.png" alt="Ballet dancer">
+        <img src="https://images.unsplash.com/photo-1535525153412-5a42439a210d?w=350&h=250&fit=crop" alt="Dance class">
+      </div>
+    </div>
+  </section>
+
+  <!-- DANCE FORMS & FITNESS -->
+  <section id="classes">
+    <div class="container">
+      <h2 class="section-title"><span class="gradient-text">Dance Forms &amp; Fitness</span></h2>
+      <p class="section-subtitle">From graceful ballet to fiery Bollywood beats — find your rhythm.</p>
+
+      <div class="forms-grid">
+        <!-- Ballet -->
+        <div class="form-card">
+          <div class="form-card__accent form-card__accent--pink"></div>
+          <div class="form-card__body">
+            <h3 class="form-card__title">Ballet</h3>
+            <span class="form-card__level level--all">All Levels</span>
+            <p class="form-card__desc">Classical technique meets graceful expression. Build strength, poise, and elegance.</p>
+            <details>
+              <summary>More info</summary>
+              <p>Our ballet program covers barre work, center combinations, across-the-floor progressions, and petite/grande allegro. Classes range from absolute beginner to advanced pointe work. Ages 5 and up welcome.</p>
+            </details>
+          </div>
+        </div>
+
+        <!-- Contemporary -->
+        <div class="form-card">
+          <div class="form-card__accent form-card__accent--lilac"></div>
+          <div class="form-card__body">
+            <h3 class="form-card__title">Contemporary</h3>
+            <span class="form-card__level level--intermediate">Intermediate+</span>
+            <p class="form-card__desc">Fluid, emotional movement that blends ballet with modern technique.</p>
+            <details>
+              <summary>More info</summary>
+              <p>Explore floorwork, release technique, improvisation, and partnering. Our contemporary classes draw from Limon, Graham, and Forsythe influences. Some ballet experience recommended.</p>
+            </details>
+          </div>
+        </div>
+
+        <!-- Hip-Hop -->
+        <div class="form-card">
+          <div class="form-card__accent form-card__accent--mint"></div>
+          <div class="form-card__body">
+            <h3 class="form-card__title">Hip-Hop</h3>
+            <span class="form-card__level level--beginner">Beginner Friendly</span>
+            <p class="form-card__desc">High-energy grooves, isolations, and choreography to the latest hits.</p>
+            <details>
+              <summary>More info</summary>
+              <p>Learn popping, locking, breaking fundamentals, and choreography-based routines. Our hip-hop classes are super welcoming — no experience needed. Great cardio workout too!</p>
+            </details>
+          </div>
+        </div>
+
+        <!-- Jazz -->
+        <div class="form-card">
+          <div class="form-card__accent form-card__accent--yellow"></div>
+          <div class="form-card__body">
+            <h3 class="form-card__title">Jazz</h3>
+            <span class="form-card__level level--all">All Levels</span>
+            <p class="form-card__desc">Sharp, sassy, and fun. Broadway-style jazz with a modern twist.</p>
+            <details>
+              <summary>More info</summary>
+              <p>From classic jazz fundamentals to musical theatre choreography and commercial jazz styles. Build technique through isolations, kicks, turns, and leaps. Perfect for performers!</p>
+            </details>
+          </div>
+        </div>
+
+        <!-- Salsa -->
+        <div class="form-card">
+          <div class="form-card__accent form-card__accent--pink"></div>
+          <div class="form-card__body">
+            <h3 class="form-card__title">Salsa</h3>
+            <span class="form-card__level level--beginner">Beginner Friendly</span>
+            <p class="form-card__desc">Spicy Latin rhythms, partner work, and social dance skills.</p>
+            <details>
+              <summary>More info</summary>
+              <p>Learn salsa basics, cross-body leads, turn patterns, and styling. Solo and partner options available. We host monthly socials so you can practice your moves!</p>
+            </details>
+          </div>
+        </div>
+
+        <!-- Bollywood -->
+        <div class="form-card">
+          <div class="form-card__accent form-card__accent--lilac"></div>
+          <div class="form-card__body">
+            <h3 class="form-card__title">Bollywood</h3>
+            <span class="form-card__level level--beginner">Beginner Friendly</span>
+            <p class="form-card__desc">Vibrant, expressive dance to Bollywood's biggest and brightest tracks.</p>
+            <details>
+              <summary>More info</summary>
+              <p>A fusion of classical Indian dance, folk styles, and modern choreography set to Bollywood music. Expect lots of expression, hand gestures, and pure joy. No experience needed!</p>
+            </details>
+          </div>
+        </div>
+
+        <!-- Zumba -->
+        <div class="form-card">
+          <div class="form-card__accent form-card__accent--mint"></div>
+          <div class="form-card__body">
+            <h3 class="form-card__title">Zumba</h3>
+            <span class="form-card__level level--beginner">Beginner Friendly</span>
+            <p class="form-card__desc">Dance-fitness party! Burn calories while having the time of your life.</p>
+            <details>
+              <summary>More info</summary>
+              <p>High-energy cardio dance set to Latin, pop, and world music beats. No dance experience necessary — just follow along and have fun. Burns 400-800 calories per session!</p>
+            </details>
+          </div>
+        </div>
+
+        <!-- Yoga -->
+        <div class="form-card">
+          <div class="form-card__accent form-card__accent--yellow"></div>
+          <div class="form-card__body">
+            <h3 class="form-card__title">Yoga</h3>
+            <span class="form-card__level level--all">All Levels</span>
+            <p class="form-card__desc">Stretch, breathe, and find your center. The perfect complement to dance.</p>
+            <details>
+              <summary>More info</summary>
+              <p>Vinyasa and Hatha styles offered. Focus on flexibility, strength, balance, and mindfulness. Great for injury prevention and recovery. Special yoga-for-dancers sessions available weekly.</p>
+            </details>
+          </div>
+        </div>
+
+        <!-- Gymnastics -->
+        <div class="form-card">
+          <div class="form-card__accent form-card__accent--pink"></div>
+          <div class="form-card__body">
+            <h3 class="form-card__title">Gymnastics</h3>
+            <span class="form-card__level level--advanced">Intermediate+</span>
+            <p class="form-card__desc">Tumbling, flexibility, and acrobatic elements for dancers and movers.</p>
+            <details>
+              <summary>More info</summary>
+              <p>Build acrobatic skills including cartwheels, walkovers, aerials, and tumbling passes. Designed for dancers who want to add tricks to their repertoire. Proper spotting and progressions ensured.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEEKLY SCHEDULE -->
+  <section class="schedule-section" id="schedule">
+    <div class="container">
+      <h2 class="section-title"><span class="gradient-text">Weekly Schedule</span></h2>
+      <p class="section-subtitle">Pick your day. Pick your vibe. Let's dance!</p>
+
+      <div class="tabs">
+        <input type="radio" name="schedule-tab" id="tab-mon" checked>
+        <input type="radio" name="schedule-tab" id="tab-tue">
+        <input type="radio" name="schedule-tab" id="tab-wed">
+        <input type="radio" name="schedule-tab" id="tab-thu">
+        <input type="radio" name="schedule-tab" id="tab-fri">
+        <input type="radio" name="schedule-tab" id="tab-sat">
+        <input type="radio" name="schedule-tab" id="tab-sun">
+
+        <div class="tab-labels">
+          <label for="tab-mon">Mon</label>
+          <label for="tab-tue">Tue</label>
+          <label for="tab-wed">Wed</label>
+          <label for="tab-thu">Thu</label>
+          <label for="tab-fri">Fri</label>
+          <label for="tab-sat">Sat</label>
+          <label for="tab-sun">Sun</label>
+        </div>
+
+        <div class="tab-panels">
+          <!-- Monday -->
+          <div class="tab-panel panel-mon">
+            <div class="class-grid">
+              <div class="class-card">
+                <div class="class-card__time">9:00 - 10:00 AM</div>
+                <div class="class-card__name">Yoga Flow</div>
+                <div class="class-card__instructor">with Maya Chen</div>
+              </div>
+              <div class="class-card class-card--lilac">
+                <div class="class-card__time">10:30 - 11:45 AM</div>
+                <div class="class-card__name">Ballet Fundamentals</div>
+                <div class="class-card__instructor">with Sofia Martinez</div>
+              </div>
+              <div class="class-card class-card--mint">
+                <div class="class-card__time">12:00 - 1:00 PM</div>
+                <div class="class-card__name">Zumba</div>
+                <div class="class-card__instructor">with Carlos Rivera</div>
+              </div>
+              <div class="class-card class-card--yellow">
+                <div class="class-card__time">5:00 - 6:15 PM</div>
+                <div class="class-card__name">Contemporary</div>
+                <div class="class-card__instructor">with Anika Patel</div>
+              </div>
+              <div class="class-card">
+                <div class="class-card__time">6:30 - 7:30 PM</div>
+                <div class="class-card__name">Hip-Hop</div>
+                <div class="class-card__instructor">with DJ Marcus</div>
+              </div>
+              <div class="class-card class-card--lilac">
+                <div class="class-card__time">7:45 - 8:45 PM</div>
+                <div class="class-card__name">Salsa Social</div>
+                <div class="class-card__instructor">with Elena Torres</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tuesday -->
+          <div class="tab-panel panel-tue">
+            <div class="class-grid">
+              <div class="class-card class-card--lilac">
+                <div class="class-card__time">9:00 - 10:15 AM</div>
+                <div class="class-card__name">Ballet Intermediate</div>
+                <div class="class-card__instructor">with Sofia Martinez</div>
+              </div>
+              <div class="class-card class-card--mint">
+                <div class="class-card__time">10:30 - 11:30 AM</div>
+                <div class="class-card__name">Jazz</div>
+                <div class="class-card__instructor">with Tanya Brooks</div>
+              </div>
+              <div class="class-card">
+                <div class="class-card__time">12:00 - 1:00 PM</div>
+                <div class="class-card__name">Bollywood</div>
+                <div class="class-card__instructor">with Priya Sharma</div>
+              </div>
+              <div class="class-card class-card--yellow">
+                <div class="class-card__time">5:00 - 6:00 PM</div>
+                <div class="class-card__name">Gymnastics</div>
+                <div class="class-card__instructor">with Leo Park</div>
+              </div>
+              <div class="class-card class-card--mint">
+                <div class="class-card__time">6:30 - 7:30 PM</div>
+                <div class="class-card__name">Hip-Hop Choreo</div>
+                <div class="class-card__instructor">with DJ Marcus</div>
+              </div>
+              <div class="class-card class-card--lilac">
+                <div class="class-card__time">7:45 - 8:45 PM</div>
+                <div class="class-card__name">Yoga for Dancers</div>
+                <div class="class-card__instructor">with Maya Chen</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wednesday -->
+          <div class="tab-panel panel-wed">
+            <div class="class-grid">
+              <div class="class-card">
+                <div class="class-card__time">9:00 - 10:00 AM</div>
+                <div class="class-card__name">Zumba</div>
+                <div class="class-card__instructor">with Carlos Rivera</div>
+              </div>
+              <div class="class-card class-card--lilac">
+                <div class="class-card__time">10:30 - 11:45 AM</div>
+                <div class="class-card__name">Contemporary</div>
+                <div class="class-card__instructor">with Anika Patel</div>
+              </div>
+              <div class="class-card class-card--mint">
+                <div class="class-card__time">12:00 - 1:00 PM</div>
+                <div class="class-card__name">Salsa Basics</div>
+                <div class="class-card__instructor">with Elena Torres</div>
+              </div>
+              <div class="class-card class-card--yellow">
+                <div class="class-card__time">5:00 - 6:15 PM</div>
+                <div class="class-card__name">Ballet Advanced</div>
+                <div class="class-card__instructor">with Sofia Martinez</div>
+              </div>
+              <div class="class-card">
+                <div class="class-card__time">6:30 - 7:30 PM</div>
+                <div class="class-card__name">Jazz Funk</div>
+                <div class="class-card__instructor">with Tanya Brooks</div>
+              </div>
+              <div class="class-card class-card--mint">
+                <div class="class-card__time">7:45 - 8:45 PM</div>
+                <div class="class-card__name">Bollywood</div>
+                <div class="class-card__instructor">with Priya Sharma</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Thursday -->
+          <div class="tab-panel panel-thu">
+            <div class="class-grid">
+              <div class="class-card class-card--yellow">
+                <div class="class-card__time">9:00 - 10:00 AM</div>
+                <div class="class-card__name">Yoga Flow</div>
+                <div class="class-card__instructor">with Maya Chen</div>
+              </div>
+              <div class="class-card">
+                <div class="class-card__time">10:30 - 11:30 AM</div>
+                <div class="class-card__name">Hip-Hop</div>
+                <div class="class-card__instructor">with DJ Marcus</div>
+              </div>
+              <div class="class-card class-card--lilac">
+                <div class="class-card__time">12:00 - 1:00 PM</div>
+                <div class="class-card__name">Ballet Fundamentals</div>
+                <div class="class-card__instructor">with Sofia Martinez</div>
+              </div>
+              <div class="class-card class-card--mint">
+                <div class="class-card__time">5:00 - 6:00 PM</div>
+                <div class="class-card__name">Gymnastics</div>
+                <div class="class-card__instructor">with Leo Park</div>
+              </div>
+              <div class="class-card class-card--yellow">
+                <div class="class-card__time">6:30 - 7:30 PM</div>
+                <div class="class-card__name">Contemporary</div>
+                <div class="class-card__instructor">with Anika Patel</div>
+              </div>
+              <div class="class-card">
+                <div class="class-card__time">7:45 - 8:45 PM</div>
+                <div class="class-card__name">Zumba Party</div>
+                <div class="class-card__instructor">with Carlos Rivera</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Friday -->
+          <div class="tab-panel panel-fri">
+            <div class="class-grid">
+              <div class="class-card">
+                <div class="class-card__time">9:00 - 10:15 AM</div>
+                <div class="class-card__name">Ballet Intermediate</div>
+                <div class="class-card__instructor">with Sofia Martinez</div>
+              </div>
+              <div class="class-card class-card--mint">
+                <div class="class-card__time">10:30 - 11:30 AM</div>
+                <div class="class-card__name">Jazz</div>
+                <div class="class-card__instructor">with Tanya Brooks</div>
+              </div>
+              <div class="class-card class-card--yellow">
+                <div class="class-card__time">12:00 - 1:00 PM</div>
+                <div class="class-card__name">Bollywood</div>
+                <div class="class-card__instructor">with Priya Sharma</div>
+              </div>
+              <div class="class-card class-card--lilac">
+                <div class="class-card__time">5:00 - 6:00 PM</div>
+                <div class="class-card__name">Salsa</div>
+                <div class="class-card__instructor">with Elena Torres</div>
+              </div>
+              <div class="class-card">
+                <div class="class-card__time">6:30 - 7:30 PM</div>
+                <div class="class-card__name">Hip-Hop Freestyle</div>
+                <div class="class-card__instructor">with DJ Marcus</div>
+              </div>
+              <div class="class-card class-card--mint">
+                <div class="class-card__time">8:00 - 9:30 PM</div>
+                <div class="class-card__name">Friday Social Dance</div>
+                <div class="class-card__instructor">Open floor</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Saturday -->
+          <div class="tab-panel panel-sat">
+            <div class="class-grid">
+              <div class="class-card class-card--lilac">
+                <div class="class-card__time">9:00 - 10:00 AM</div>
+                <div class="class-card__name">Yoga &amp; Stretch</div>
+                <div class="class-card__instructor">with Maya Chen</div>
+              </div>
+              <div class="class-card class-card--mint">
+                <div class="class-card__time">10:15 - 11:30 AM</div>
+                <div class="class-card__name">Kids Ballet (5-8)</div>
+                <div class="class-card__instructor">with Sofia Martinez</div>
+              </div>
+              <div class="class-card class-card--yellow">
+                <div class="class-card__time">11:45 AM - 12:45 PM</div>
+                <div class="class-card__name">Kids Hip-Hop (8-12)</div>
+                <div class="class-card__instructor">with DJ Marcus</div>
+              </div>
+              <div class="class-card">
+                <div class="class-card__time">1:00 - 2:00 PM</div>
+                <div class="class-card__name">Zumba</div>
+                <div class="class-card__instructor">with Carlos Rivera</div>
+              </div>
+              <div class="class-card class-card--lilac">
+                <div class="class-card__time">2:30 - 4:00 PM</div>
+                <div class="class-card__name">Open Studio Practice</div>
+                <div class="class-card__instructor">Self-guided</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sunday -->
+          <div class="tab-panel panel-sun">
+            <div class="class-grid">
+              <div class="class-card class-card--mint">
+                <div class="class-card__time">10:00 - 11:00 AM</div>
+                <div class="class-card__name">Yoga Restore</div>
+                <div class="class-card__instructor">with Maya Chen</div>
+              </div>
+              <div class="class-card class-card--yellow">
+                <div class="class-card__time">11:15 AM - 12:30 PM</div>
+                <div class="class-card__name">Contemporary Workshop</div>
+                <div class="class-card__instructor">with Anika Patel</div>
+              </div>
+              <div class="class-card class-card--lilac">
+                <div class="class-card__time">1:00 - 2:00 PM</div>
+                <div class="class-card__name">Bollywood Fun</div>
+                <div class="class-card__instructor">with Priya Sharma</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPCOMING WORKSHOPS -->
+  <section id="workshops">
+    <div class="container">
+      <h2 class="section-title"><span class="gradient-text">Upcoming Workshops</span></h2>
+      <p class="section-subtitle">Special events to level up your skills and try something new!</p>
+
+      <div class="workshops-grid">
+        <!-- Flamenco -->
+        <div class="workshop-card">
+          <div class="workshop-card__banner" style="background: var(--pink);"></div>
+          <div class="workshop-card__body">
+            <span class="workshop-card__date" style="background: var(--pink-light); color: #a0365a;">Apr 12, 2026</span>
+            <h3 class="workshop-card__title">Flamenco Intensive</h3>
+            <p class="workshop-card__desc">A full-day deep dive into flamenco technique, footwork, and emotional expression. Guest instructor from Seville.</p>
+            <div class="workshop-card__price">$85 per person</div>
+          </div>
+        </div>
+
+        <!-- Hip-Hop Bootcamp -->
+        <div class="workshop-card">
+          <div class="workshop-card__banner" style="background: var(--lilac);"></div>
+          <div class="workshop-card__body">
+            <span class="workshop-card__date" style="background: var(--lilac-light); color: #5a3d8a;">Apr 19, 2026</span>
+            <h3 class="workshop-card__title">Hip-Hop Choreography Bootcamp</h3>
+            <p class="workshop-card__desc">Learn a complete routine in one day. Filming session included so you can share your moves online!</p>
+            <div class="workshop-card__price">$65 per person</div>
+          </div>
+        </div>
+
+        <!-- Yoga & Dance Fusion -->
+        <div class="workshop-card">
+          <div class="workshop-card__banner" style="background: var(--mint);"></div>
+          <div class="workshop-card__body">
+            <span class="workshop-card__date" style="background: var(--mint-light); color: #1a6b42;">May 3, 2026</span>
+            <h3 class="workshop-card__title">Yoga &amp; Dance Fusion</h3>
+            <p class="workshop-card__desc">Where mindfulness meets movement. Explore the intersection of yoga flow and contemporary dance.</p>
+            <div class="workshop-card__price">$55 per person</div>
+          </div>
+        </div>
+
+        <!-- Bollywood Workshop -->
+        <div class="workshop-card">
+          <div class="workshop-card__banner" style="background: var(--yellow);"></div>
+          <div class="workshop-card__body">
+            <span class="workshop-card__date" style="background: var(--yellow-light); color: #8a6d00;">May 10, 2026</span>
+            <h3 class="workshop-card__title">Bollywood Dance Workshop</h3>
+            <p class="workshop-card__desc">Learn iconic Bollywood choreography with high-energy music, colorful vibes, and non-stop fun!</p>
+            <div class="workshop-card__price">$50 per person</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDIO IMAGES -->
+  <section style="padding: 32px 0; background: var(--card);">
+    <div class="container">
+      <div class="gallery-row">
+        <img src="../../images/studio-floor.png" alt="Studio dance floor">
+        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=350&h=250&fit=crop" alt="Yoga and dance fusion">
+        <img src="https://images.unsplash.com/photo-1535525153412-5a42439a210d?w=350&h=250&fit=crop" alt="Dance performance">
+        <img src="https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=350&h=250&fit=crop" alt="Group dance class">
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="section-title"><span class="gradient-text">Frequently Asked Questions</span></h2>
+      <p class="section-subtitle">Got questions? We've got sparkly answers!</p>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Do I need any dance experience to join?</summary>
+          <p>Nope, not at all! Many of our classes are beginner-friendly and our instructors love working with first-timers. Just bring comfy clothes and an open mind. We'll handle the rest!</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What should I wear to class?</summary>
+          <p>Wear comfortable clothing that allows you to move freely. For ballet, we recommend fitted attire and ballet slippers. For hip-hop and Zumba, sneakers work great. Yoga classes are best in stretchy, breathable fabrics. We have a small retail section if you need anything!</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do I sign up for a class?</summary>
+          <p>You can drop in for any regular class, but we recommend reserving your spot in advance by calling us at (555) 234-8901 or emailing hello@studioaura.com. Workshops require pre-registration as spots are limited.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What are your pricing options?</summary>
+          <p>We offer drop-in rates ($20/class), class packs (5 for $85, 10 for $150), and unlimited monthly memberships ($120/month). Students and seniors get 15% off. Family bundles are also available!</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do you offer kids' classes?</summary>
+          <p>Absolutely! We have dedicated classes for kids aged 5-8 and 8-12, primarily on Saturday mornings. We offer ballet, hip-hop, and creative movement for young dancers. Summer camps are available too!</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is there parking available?</summary>
+          <p>Yes! We have a free parking lot behind the studio with 30 spaces. Street parking is also available on Movement Lane. The Arts District metro stop is a 5-minute walk away for those using public transit.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <h2 class="section-title"><span class="gradient-text">Get In Touch</span></h2>
+      <p class="section-subtitle">We'd love to hear from you! Drop us a line or swing by the studio.</p>
+
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-item__label">Phone</div>
+          <div class="contact-item__value">(555) 234-8901</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item__label">Email</div>
+          <div class="contact-item__value">hello@studioaura.com</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item__label">Address</div>
+          <div class="contact-item__value">247 Movement Lane, Arts District</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item__label">Hours</div>
+          <div class="contact-item__value">Mon-Sat 9AM-9PM, Sun 10AM-3PM</div>
+        </div>
+      </div>
+
+      <a href="mailto:hello@studioaura.com" class="gradient-btn">Say Hello!</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Studio Aura &mdash; Dance &amp; Fitness Studio. Made with &#10084;&#65039; in the Arts District.</p>
+      <p style="margin-top: 8px;"><a href="../../index.html">Back to Gallery</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

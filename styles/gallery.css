@@ -48,11 +48,11 @@ body {
 
 /* Gallery Grid */
 .gallery {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 0 40px 100px;
+  padding: 0 20px 100px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 32px;
 }
 
@@ -123,178 +123,197 @@ body {
 }
 
 /* Preview styles for each card */
+
+/* 01 - Minimal Luxe */
 .preview-1 {
   background: #FAFAF8;
 }
 .preview-1::after {
-  content: 'P & J';
+  content: 'AURA';
   font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  color: #8A9A7B;
+  font-size: 2.5rem;
+  color: #C9A96E;
   font-weight: 300;
+  letter-spacing: 0.3em;
 }
 
+/* 02 - Bold Urban */
 .preview-2 {
-  background: linear-gradient(135deg, #8B1A1A, #C2185B, #D4A853);
+  background: #0D0D0D;
 }
 .preview-2::after {
-  content: 'P & J';
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  color: #D4A853;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  content: 'STUDIO AURA';
+  font-family: 'Inter', sans-serif;
+  font-size: 1.8rem;
+  color: #FF3C38;
+  letter-spacing: 0.15em;
   font-weight: 700;
+  text-shadow: 0 0 20px rgba(255, 60, 56, 0.4);
 }
 
+/* 03 - Soft Organic */
 .preview-3 {
-  background: #0A0A0A;
+  background: #F5F0EB;
 }
 .preview-3::after {
-  content: 'PRIYA & JAMES';
-  font-family: 'Inter', sans-serif;
-  font-size: 1.2rem;
-  color: #C45D2C;
-  letter-spacing: 0.3em;
-  font-weight: 300;
-}
-
-.preview-4 {
-  background: #F5F0E1;
-  border-bottom: 3px double #333;
-}
-.preview-4::after {
-  content: 'The Wedding Gazette';
+  content: 'studio aura';
   font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
-  color: #333;
-  font-style: italic;
-}
-
-.preview-5 {
-  background: linear-gradient(135deg, #F8E8E0, #E8E0F0, #D4E2D4);
-}
-.preview-5::after {
-  content: 'P & J';
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  color: #8a7060;
+  font-size: 2rem;
+  color: #C17C56;
   font-style: italic;
   font-weight: 400;
 }
 
+/* 04 - Dark Editorial */
+.preview-4 {
+  background: #0A0A0A;
+}
+.preview-4::after {
+  content: 'STUDIO AURA';
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: #D4A373;
+  letter-spacing: 0.25em;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* 05 - Neon Noir */
+.preview-5 {
+  background: #0A0A0F;
+}
+.preview-5::after {
+  content: 'AURA';
+  font-family: 'Inter', sans-serif;
+  font-size: 2.5rem;
+  color: #FF2D7B;
+  font-weight: 700;
+  text-shadow: 0 0 30px rgba(255, 45, 123, 0.5), 0 0 60px rgba(255, 45, 123, 0.2);
+}
+
+/* 06 - Retro Groovy */
 .preview-6 {
-  background: #fff;
-  border: 4px solid #000;
+  background: #FFF8F0;
 }
 .preview-6::after {
-  content: 'P+J';
+  content: 'Studio Aura';
+  font-family: cursive;
+  font-size: 2.2rem;
+  color: #E8651A;
+  font-weight: 700;
+}
+
+/* 07 - Zen Minimal */
+.preview-7 {
+  background: #FAF9F6;
+}
+.preview-7::after {
+  content: 'aura';
+  font-family: 'Inter', sans-serif;
+  font-size: 2rem;
+  color: #2C2C2C;
+  font-weight: 200;
+  letter-spacing: 0.5em;
+}
+
+/* 08 - Pastel Pop */
+.preview-8 {
+  background: linear-gradient(135deg, #FFF5FC, #F0E8FF, #E8FFF5);
+}
+.preview-8::after {
+  content: 'AURA';
+  font-family: 'Inter', sans-serif;
+  font-size: 2.5rem;
+  color: #FF8FAB;
+  font-weight: 700;
+}
+
+/* 09 - Brutalist */
+.preview-9 {
+  background: #F0F0F0;
+  border: 4px solid #000;
+}
+.preview-9::after {
+  content: 'AURA';
   font-family: monospace;
   font-size: 4rem;
   color: #0000FF;
   font-weight: 700;
 }
 
-.preview-7 {
-  background: #1A1A1A;
+/* 10 - Warm Terracotta */
+.preview-10 {
+  background: #FBF7F2;
 }
-.preview-7::after {
-  content: 'PRIYA & JAMES';
-  font-family: 'Inter', sans-serif;
-  font-size: 1.5rem;
-  color: #E8D5B7;
-  letter-spacing: 0.2em;
-  font-weight: 300;
+.preview-10::after {
+  content: 'Studio Aura';
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #C0613A;
+  font-weight: 700;
 }
 
-.preview-8 {
+/* 11 - Monochrome Ballet */
+.preview-11 {
+  background: #FFFFFF;
+}
+.preview-11::after {
+  content: 'AURA';
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #000000;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+/* 12 - Glass Modern */
+.preview-12 {
+  background: linear-gradient(135deg, #0F0F1A, #1A1A3E);
+}
+.preview-12::after {
+  content: 'studio aura';
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-shadow: 0 0 40px rgba(99, 102, 241, 0.5);
+}
+
+/* 13 - Art Deco */
+.preview-13 {
   background: #0D0D0D;
   background-image: conic-gradient(from 0deg at 50% 100%, transparent 40%, #C9A84C33 41%, #C9A84C33 59%, transparent 60%);
 }
-.preview-8::after {
-  content: 'P & J';
+.preview-13::after {
+  content: 'AURA';
   font-family: 'Inter', sans-serif;
   font-size: 2rem;
   color: #C9A84C;
-  letter-spacing: 0.4em;
+  letter-spacing: 0.5em;
   font-weight: 300;
 }
 
-.preview-9 {
-  background: #D2B48C;
-}
-.preview-9::after {
-  content: 'P & J';
-  font-family: cursive;
-  font-size: 2.5rem;
-  color: #fff;
-  transform: rotate(-3deg);
-}
-
-.preview-10 {
-  background: #fff;
-}
-.preview-10::after {
-  content: 'P&J';
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 5rem;
-  color: #000;
-  font-weight: 700;
-  letter-spacing: -0.05em;
-}
-
-.preview-11 {
-  background: #FAF5EF;
-}
-.preview-11::after {
-  content: 'P & J';
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  color: #722F37;
-  font-weight: 400;
-}
-
-.preview-12 {
-  background: linear-gradient(135deg, #A8D5D0, #FEFCF6, #3D7C98);
-}
-.preview-12::after {
-  content: 'P & J';
-  font-family: 'Inter', sans-serif;
-  font-size: 2rem;
-  color: #3D7C98;
-  font-weight: 300;
-  letter-spacing: 0.15em;
-}
-
-.preview-13 {
-  background: #2C2C2C;
-}
-.preview-13::after {
-  content: 'PRIYA & JAMES';
-  font-family: 'Inter', sans-serif;
-  font-size: 1.1rem;
-  color: #C4A265;
-  letter-spacing: 0.35em;
-  font-weight: 300;
-}
-
+/* 14 - Boho Flow */
 .preview-14 {
   background: #FDF8F0;
 }
 .preview-14::after {
-  content: 'P & J';
+  content: 'studio aura';
   font-family: cursive;
-  font-size: 3rem;
-  color: #C4704B;
+  font-size: 2.5rem;
+  color: #8B7D6B;
   font-weight: 400;
 }
 
+/* 15 - Enchanted Night */
 .preview-15 {
   background: #1B2838;
 }
 .preview-15::after {
-  content: 'Once Upon a Time';
+  content: 'Studio Aura';
   font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: #D4AF37;
   font-style: italic;
   font-weight: 400;

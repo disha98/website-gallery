@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Aura — Dance &amp; Fitness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Inter:wght@300;400&family=Outfit:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: #0A0A0F;
+      color: #E0E0E0;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ===== VARIABLES ===== */
+    :root {
+      --pink: #FF2D7B;
+      --cyan: #00E5FF;
+      --glow: #FF2D7B33;
+      --card-bg: #14141F;
+      --bg: #0A0A0F;
+      --text: #E0E0E0;
+      --text-dim: #8A8A9A;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3, h4 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-bottom: 0.3em;
+    }
+
+    h3 { font-size: 1.25rem; }
+
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    a:hover { color: var(--pink); }
+
+    /* ===== UTILITIES ===== */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem;
+    }
+
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.5em;
+    }
+
+    .section-subtitle {
+      color: var(--text-dim);
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+      font-size: 1.05rem;
+    }
+
+    .neon-pink { color: var(--pink); }
+    .neon-cyan { color: var(--cyan); }
+
+    .neon-divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--pink), var(--cyan));
+      border: none;
+      border-radius: 2px;
+      margin: 1rem 0 2rem;
+    }
+
+    /* ===== BACK LINK ===== */
+    .back-link {
+      position: fixed;
+      top: 1.2rem;
+      left: 1.5rem;
+      z-index: 100;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--text-dim);
+      background: rgba(20, 20, 31, 0.85);
+      padding: 0.4em 1em;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 45, 123, 0.2);
+      transition: all 0.3s;
+    }
+    .back-link:hover {
+      color: var(--pink);
+      border-color: var(--pink);
+      box-shadow: 0 0 12px var(--glow);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        url('https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=1400&h=900&fit=crop')
+        center / cover no-repeat;
+      filter: brightness(0.7) contrast(1.2);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg,
+          rgba(10, 10, 15, 0.6) 0%,
+          rgba(10, 10, 15, 0.3) 40%,
+          rgba(10, 10, 15, 0.85) 100%),
+        linear-gradient(135deg,
+          rgba(255, 45, 123, 0.12) 0%,
+          transparent 50%,
+          rgba(0, 229, 255, 0.08) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+    }
+
+    .hero-studio-name {
+      font-family: 'Italiana', serif;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: #fff;
+      text-shadow:
+        0 0 10px rgba(255, 45, 123, 0.6),
+        0 0 30px rgba(255, 45, 123, 0.4),
+        0 0 60px rgba(255, 45, 123, 0.2),
+        0 0 100px rgba(0, 229, 255, 0.15);
+      margin-bottom: 0.15em;
+    }
+
+    .hero-tagline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      text-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+      margin-bottom: 2rem;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 0.85em 2.5em;
+      border: 1px solid var(--pink);
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      transition: all 0.4s;
+      text-shadow: 0 0 8px rgba(255, 45, 123, 0.4);
+    }
+    .hero-cta:hover {
+      background: var(--pink);
+      color: #fff;
+      box-shadow: 0 0 25px rgba(255, 45, 123, 0.5), 0 0 60px rgba(255, 45, 123, 0.2);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      z-index: 2;
+    }
+
+    /* ===== ABOUT / LOCATION ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .about-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 2.5rem;
+      border: 1px solid rgba(255, 45, 123, 0.1);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .about-card:hover {
+      border-color: rgba(255, 45, 123, 0.3);
+      box-shadow: 0 0 30px var(--glow);
+    }
+
+    .about-image-wrap {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      aspect-ratio: 16 / 10;
+    }
+
+    .about-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.7) contrast(1.2);
+      display: block;
+    }
+
+    .about-image-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(10, 10, 15, 0.7) 100%);
+    }
+
+    .about-card h3 {
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+
+    .about-card p {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+    }
+
+    .location-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      margin-top: 1rem;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .location-detail .icon {
+      color: var(--pink);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 0.15em;
+    }
+
+    /* ===== DANCE FORMS & FITNESS ===== */
+    .forms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .form-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .form-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .form-card-border-pink { border-top: 3px solid var(--pink); }
+    .form-card-border-cyan { border-top: 3px solid var(--cyan); }
+
+    .form-card details {
+      padding: 1.5rem;
+    }
+
+    .form-card summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    .form-card summary::-webkit-details-marker { display: none; }
+
+    .form-card summary::after {
+      content: '+';
+      font-size: 1.4rem;
+      color: var(--text-dim);
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    .form-card details[open] summary::after {
+      content: '−';
+      color: var(--pink);
+    }
+
+    .form-card .form-body {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--text-dim);
+      font-size: 0.92rem;
+    }
+
+    .form-card .form-meta {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 0.8rem;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+    }
+
+    .form-card .form-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .form-tag {
+      display: inline-block;
+      padding: 0.2em 0.7em;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      margin-right: 0.4rem;
+    }
+    .tag-pink { background: rgba(255, 45, 123, 0.15); color: var(--pink); }
+    .tag-cyan { background: rgba(0, 229, 255, 0.15); color: var(--cyan); }
+
+    /* ===== SCHEDULE ===== */
+    .schedule-table-wrap {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card-bg);
+      font-size: 0.9rem;
+    }
+
+    .schedule-table th {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 2px solid rgba(0, 229, 255, 0.2);
+      white-space: nowrap;
+    }
+
+    .schedule-table td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      vertical-align: top;
+    }
+
+    .schedule-table tr:last-child td { border-bottom: none; }
+
+    .schedule-time {
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      white-space: nowrap;
+    }
+
+    .schedule-class {
+      color: #fff;
+      font-weight: 400;
+    }
+
+    .schedule-active {
+      border-left: 3px solid var(--pink);
+      box-shadow: inset 4px 0 12px rgba(255, 45, 123, 0.15);
+    }
+
+    .schedule-instructor {
+      color: var(--text-dim);
+      font-size: 0.82rem;
+    }
+
+    .schedule-day-label {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      color: var(--pink);
+      padding-top: 1.2rem;
+    }
+
+    /* ===== WORKSHOPS ===== */
+    .workshops-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .workshop-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .workshop-card:hover {
+      border-color: rgba(0, 229, 255, 0.3);
+      box-shadow: 0 0 30px rgba(0, 229, 255, 0.1);
+    }
+
+    .workshop-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--pink), var(--cyan));
+    }
+
+    .workshop-date {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.8rem;
+    }
+
+    .workshop-card h3 {
+      color: #fff;
+      margin-bottom: 0.6rem;
+      font-size: 1.15rem;
+    }
+
+    .workshop-card p {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .workshop-price {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--pink);
+      text-shadow: 0 0 15px var(--glow);
+    }
+
+    /* ===== FAQ ===== */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 800px;
+    }
+
+    .faq-item {
+      background: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      overflow: hidden;
+      transition: box-shadow 0.3s;
+    }
+    .faq-item:hover {
+      box-shadow: 0 0 20px var(--glow);
+    }
+
+    .faq-item summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 1.3rem 1.8rem;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .faq-item summary::-webkit-details-marker { display: none; }
+
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.4rem;
+      color: var(--pink);
+      transition: transform 0.3s;
+    }
+
+    .faq-item details[open] summary::after {
+      content: '−';
+    }
+
+    .faq-answer {
+      padding: 0 1.8rem 1.5rem;
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-section {
+      text-align: center;
+      position: relative;
+    }
+
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 45, 123, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin: 2rem 0 2.5rem;
+    }
+
+    .contact-item {
+      text-align: center;
+    }
+
+    .contact-item .label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-item .value {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1em 3em;
+      background: linear-gradient(135deg, var(--pink), #cc1a5e);
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      box-shadow:
+        0 0 20px rgba(255, 45, 123, 0.4),
+        0 0 60px rgba(255, 45, 123, 0.15);
+      transition: all 0.4s;
+    }
+    .cta-button:hover {
+      color: #fff;
+      box-shadow:
+        0 0 30px rgba(255, 45, 123, 0.6),
+        0 0 80px rgba(255, 45, 123, 0.3),
+        0 0 120px rgba(255, 45, 123, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .footer-brand {
+      font-family: 'Italiana', serif;
+      font-size: 1.5rem;
+      color: var(--pink);
+      text-shadow: 0 0 15px var(--glow);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ===== AMBIENT GLOW BLOBS ===== */
+    .glow-blob {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: -1;
+      filter: blur(100px);
+    }
+    .glow-blob-1 {
+      width: 400px;
+      height: 400px;
+      background: rgba(255, 45, 123, 0.06);
+      top: 20%;
+      left: -100px;
+    }
+    .glow-blob-2 {
+      width: 350px;
+      height: 350px;
+      background: rgba(0, 229, 255, 0.05);
+      top: 60%;
+      right: -80px;
+    }
+
+    /* ===== IMAGE WITH OVERLAY UTILITY ===== */
+    .img-moody {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    .img-moody img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.7) contrast(1.2);
+    }
+    .img-moody::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 30%, rgba(10, 10, 15, 0.7) 100%);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .forms-grid { grid-template-columns: 1fr; }
+      .workshops-grid { grid-template-columns: 1fr; }
+      .contact-info { gap: 1.5rem; }
+      .schedule-table { font-size: 0.8rem; }
+      .schedule-table th,
+      .schedule-table td { padding: 0.6rem 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Ambient glow -->
+<div class="glow-blob glow-blob-1"></div>
+<div class="glow-blob glow-blob-2"></div>
+
+<!-- Back link -->
+<a href="../../index.html" class="back-link">&larr; Back to Gallery</a>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-studio-name">Studio Aura</h1>
+    <p class="hero-tagline">Dance &middot; Fitness &middot; Movement</p>
+    <a href="#classes" class="hero-cta">Explore Classes</a>
+  </div>
+  <span class="hero-scroll">Scroll to discover</span>
+</section>
+
+<!-- ==================== ABOUT / LOCATION ==================== -->
+<section class="section" id="about">
+  <p class="section-label">About Us</p>
+  <h2>Where <span class="neon-pink">Passion</span> Meets <span class="neon-cyan">Movement</span></h2>
+  <hr class="neon-divider">
+  <p class="section-subtitle">Studio Aura is a premium dance and fitness studio in the heart of the Arts District. We believe movement is an art form, a therapy, and a way of life.</p>
+
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="about-image-wrap">
+        <img src="../../images/dance-studio.png" alt="Studio Aura dance floor" loading="lazy">
+      </div>
+      <h3>Our Space</h3>
+      <p>3,500 sq ft of sprung hardwood floors, floor-to-ceiling mirrors, state-of-the-art sound, and atmospheric lighting designed for every mood — from meditative yoga flows to high-energy hip-hop sessions.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-image-wrap">
+        <img src="../../images/studio-floor.png" alt="Studio Aura location" loading="lazy">
+      </div>
+      <h3>Find Us</h3>
+      <p>Located in the vibrant Arts District, surrounded by galleries, cafes, and creative energy that fuels everything we do.</p>
+      <div class="location-detail">
+        <span class="icon">&#9673;</span>
+        <span>247 Movement Lane, Arts District, Downtown</span>
+      </div>
+      <div class="location-detail">
+        <span class="icon">&#9673;</span>
+        <span>Open Mon–Sat 6:00 AM – 10:00 PM &middot; Sun 8:00 AM – 6:00 PM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== DANCE FORMS & FITNESS ==================== -->
+<section class="section" id="classes">
+  <p class="section-label">What We Teach</p>
+  <h2>Dance Forms <span class="neon-pink">&amp;</span> Fitness</h2>
+  <hr class="neon-divider">
+  <p class="section-subtitle">Nine disciplines, world-class instructors, one electric atmosphere. Tap a card to discover more.</p>
+
+  <div class="forms-grid">
+    <!-- Ballet -->
+    <div class="form-card form-card-border-pink">
+      <details>
+        <summary>
+          <span>Ballet</span>
+        </summary>
+        <div class="form-body">
+          <p>Classical technique meets contemporary expression. Build strength, grace, and poise through barre work, center exercises, and across-the-floor combinations.</p>
+          <div class="form-meta">
+            <span><span class="tag-pink form-tag">All Levels</span></span>
+            <span>60 min</span>
+            <span>Instructor: Mira Volkov</span>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- Contemporary -->
+    <div class="form-card form-card-border-cyan">
+      <details>
+        <summary>
+          <span>Contemporary</span>
+        </summary>
+        <div class="form-body">
+          <p>Fluid, emotive, boundary-pushing. Explore movement through breath, weight, and space. Fuses modern, ballet, and improvisational techniques.</p>
+          <div class="form-meta">
+            <span><span class="tag-cyan form-tag">Intermediate</span></span>
+            <span>75 min</span>
+            <span>Instructor: Kai Chen</span>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- Hip-Hop -->
+    <div class="form-card form-card-border-pink">
+      <details>
+        <summary>
+          <span>Hip-Hop</span>
+        </summary>
+        <div class="form-body">
+          <p>Raw energy, sharp isolations, infectious grooves. Learn choreography rooted in street dance culture — popping, locking, breaking, and freestyle foundations.</p>
+          <div class="form-meta">
+            <span><span class="tag-pink form-tag">All Levels</span></span>
+            <span>60 min</span>
+            <span>Instructor: DeShawn Riley</span>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- Jazz -->
+    <div class="form-card form-card-border-cyan">
+      <details>
+        <summary>
+          <span>Jazz</span>
+        </summary>
+        <div class="form-body">
+          <p>High-energy technique with theatrical flair. Sharp turns, leaps, and dynamic choreography that builds performance quality and stage presence.</p>
+          <div class="form-meta">
+            <span><span class="tag-cyan form-tag">Intermediate</span></span>
+            <span>60 min</span>
+            <span>Instructor: Sofia Reyes</span>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- Salsa -->
+    <div class="form-card form-card-border-pink">
+      <details>
+        <summary>
+          <span>Salsa</span>
+        </summary>
+        <div class="form-body">
+          <p>Feel the rhythm, find your partner. Cuban-style salsa with footwork drills, partner connection, and social dance etiquette. No partner needed.</p>
+          <div class="form-meta">
+            <span><span class="tag-pink form-tag">Beginner</span></span>
+            <span>60 min</span>
+            <span>Instructor: Carlos Vega</span>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- Bollywood -->
+    <div class="form-card form-card-border-cyan">
+      <details>
+        <summary>
+          <span>Bollywood</span>
+        </summary>
+        <div class="form-body">
+          <p>Vibrant, expressive, joyful. Bollywood-inspired choreography blending classical Indian movement with modern film dance. A full-body celebration.</p>
+          <div class="form-meta">
+            <span><span class="tag-cyan form-tag">All Levels</span></span>
+            <span>60 min</span>
+            <span>Instructor: Ananya Sharma</span>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- Zumba -->
+    <div class="form-card form-card-border-pink">
+      <details>
+        <summary>
+          <span>Zumba</span>
+        </summary>
+        <div class="form-body">
+          <p>Dance fitness that doesn't feel like a workout. Latin-inspired cardio with easy-to-follow moves. Burn calories, build stamina, leave smiling.</p>
+          <div class="form-meta">
+            <span><span class="tag-pink form-tag">All Levels</span></span>
+            <span>50 min</span>
+            <span>Instructor: Priya Menon</span>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- Yoga -->
+    <div class="form-card form-card-border-cyan">
+      <details>
+        <summary>
+          <span>Yoga</span>
+        </summary>
+        <div class="form-body">
+          <p>Restore, stretch, strengthen. Vinyasa flow and restorative sessions designed for dancers and non-dancers alike. Breathwork, alignment, and mindful movement.</p>
+          <div class="form-meta">
+            <span><span class="tag-cyan form-tag">All Levels</span></span>
+            <span>60 min</span>
+            <span>Instructor: Lena Park</span>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <!-- Gymnastics -->
+    <div class="form-card form-card-border-pink">
+      <details>
+        <summary>
+          <span>Gymnastics</span>
+        </summary>
+        <div class="form-body">
+          <p>Acrobatic foundations for dancers and fitness enthusiasts. Handstands, cartwheels, backbends, and tumbling progressions in a safe, guided environment.</p>
+          <div class="form-meta">
+            <span><span class="tag-pink form-tag">Beginner–Intermediate</span></span>
+            <span>75 min</span>
+            <span>Instructor: Marcus Bell</span>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WEEKLY SCHEDULE ==================== -->
+<section class="section" id="schedule">
+  <p class="section-label">Weekly Schedule</p>
+  <h2>This Week at <span class="neon-pink">Studio Aura</span></h2>
+  <hr class="neon-divider">
+  <p class="section-subtitle">Drop in to any open class. All levels welcome unless noted. First class is free.</p>
+
+  <div class="schedule-table-wrap">
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Time</th>
+          <th>Class</th>
+          <th>Instructor</th>
+          <th>Level</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Monday -->
+        <tr>
+          <td class="schedule-day-label" rowspan="4">Mon</td>
+          <td class="schedule-time">6:30 AM</td>
+          <td class="schedule-class">Yoga Flow</td>
+          <td class="schedule-instructor">Lena Park</td>
+          <td><span class="tag-cyan form-tag">All</span></td>
+        </tr>
+        <tr class="schedule-active">
+          <td class="schedule-time">10:00 AM</td>
+          <td class="schedule-class">Ballet Technique</td>
+          <td class="schedule-instructor">Mira Volkov</td>
+          <td><span class="tag-pink form-tag">Inter</span></td>
+        </tr>
+        <tr>
+          <td class="schedule-time">5:30 PM</td>
+          <td class="schedule-class">Hip-Hop</td>
+          <td class="schedule-instructor">DeShawn Riley</td>
+          <td><span class="tag-cyan form-tag">All</span></td>
+        </tr>
+        <tr class="schedule-active">
+          <td class="schedule-time">7:30 PM</td>
+          <td class="schedule-class">Salsa Social</td>
+          <td class="schedule-instructor">Carlos Vega</td>
+          <td><span class="tag-pink form-tag">All</span></td>
+        </tr>
+
+        <!-- Tuesday -->
+        <tr>
+          <td class="schedule-day-label" rowspan="3">Tue</td>
+          <td class="schedule-time">7:00 AM</td>
+          <td class="schedule-class">Zumba</td>
+          <td class="schedule-instructor">Priya Menon</td>
+          <td><span class="tag-pink form-tag">All</span></td>
+        </tr>
+        <tr class="schedule-active">
+          <td class="schedule-time">12:00 PM</td>
+          <td class="schedule-class">Contemporary</td>
+          <td class="schedule-instructor">Kai Chen</td>
+          <td><span class="tag-cyan form-tag">Inter</span></td>
+        </tr>
+        <tr>
+          <td class="schedule-time">6:00 PM</td>
+          <td class="schedule-class">Bollywood</td>
+          <td class="schedule-instructor">Ananya Sharma</td>
+          <td><span class="tag-pink form-tag">All</span></td>
+        </tr>
+
+        <!-- Wednesday -->
+        <tr>
+          <td class="schedule-day-label" rowspan="3">Wed</td>
+          <td class="schedule-time">6:30 AM</td>
+          <td class="schedule-class">Yoga Flow</td>
+          <td class="schedule-instructor">Lena Park</td>
+          <td><span class="tag-cyan form-tag">All</span></td>
+        </tr>
+        <tr class="schedule-active">
+          <td class="schedule-time">4:00 PM</td>
+          <td class="schedule-class">Jazz</td>
+          <td class="schedule-instructor">Sofia Reyes</td>
+          <td><span class="tag-pink form-tag">Inter</span></td>
+        </tr>
+        <tr>
+          <td class="schedule-time">7:00 PM</td>
+          <td class="schedule-class">Gymnastics</td>
+          <td class="schedule-instructor">Marcus Bell</td>
+          <td><span class="tag-cyan form-tag">Beg–Int</span></td>
+        </tr>
+
+        <!-- Thursday -->
+        <tr>
+          <td class="schedule-day-label" rowspan="3">Thu</td>
+          <td class="schedule-time">7:00 AM</td>
+          <td class="schedule-class">Zumba</td>
+          <td class="schedule-instructor">Priya Menon</td>
+          <td><span class="tag-pink form-tag">All</span></td>
+        </tr>
+        <tr class="schedule-active">
+          <td class="schedule-time">11:00 AM</td>
+          <td class="schedule-class">Ballet Technique</td>
+          <td class="schedule-instructor">Mira Volkov</td>
+          <td><span class="tag-cyan form-tag">All</span></td>
+        </tr>
+        <tr>
+          <td class="schedule-time">6:30 PM</td>
+          <td class="schedule-class">Hip-Hop</td>
+          <td class="schedule-instructor">DeShawn Riley</td>
+          <td><span class="tag-pink form-tag">All</span></td>
+        </tr>
+
+        <!-- Friday -->
+        <tr>
+          <td class="schedule-day-label" rowspan="3">Fri</td>
+          <td class="schedule-time">6:30 AM</td>
+          <td class="schedule-class">Yoga Flow</td>
+          <td class="schedule-instructor">Lena Park</td>
+          <td><span class="tag-cyan form-tag">All</span></td>
+        </tr>
+        <tr>
+          <td class="schedule-time">12:00 PM</td>
+          <td class="schedule-class">Contemporary</td>
+          <td class="schedule-instructor">Kai Chen</td>
+          <td><span class="tag-pink form-tag">Inter</span></td>
+        </tr>
+        <tr class="schedule-active">
+          <td class="schedule-time">8:00 PM</td>
+          <td class="schedule-class">Salsa Night</td>
+          <td class="schedule-instructor">Carlos Vega</td>
+          <td><span class="tag-cyan form-tag">All</span></td>
+        </tr>
+
+        <!-- Saturday -->
+        <tr>
+          <td class="schedule-day-label" rowspan="3">Sat</td>
+          <td class="schedule-time">9:00 AM</td>
+          <td class="schedule-class">Bollywood</td>
+          <td class="schedule-instructor">Ananya Sharma</td>
+          <td><span class="tag-pink form-tag">All</span></td>
+        </tr>
+        <tr class="schedule-active">
+          <td class="schedule-time">11:00 AM</td>
+          <td class="schedule-class">Jazz</td>
+          <td class="schedule-instructor">Sofia Reyes</td>
+          <td><span class="tag-cyan form-tag">Inter</span></td>
+        </tr>
+        <tr>
+          <td class="schedule-time">2:00 PM</td>
+          <td class="schedule-class">Gymnastics</td>
+          <td class="schedule-instructor">Marcus Bell</td>
+          <td><span class="tag-pink form-tag">Beg–Int</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ==================== WORKSHOPS ==================== -->
+<section class="section" id="workshops">
+  <p class="section-label">Special Events</p>
+  <h2>Upcoming <span class="neon-cyan">Workshops</span></h2>
+  <hr class="neon-divider">
+  <p class="section-subtitle">Intensive sessions with guest artists and resident instructors. Limited spots — reserve yours.</p>
+
+  <div class="workshops-grid">
+    <div class="workshop-card">
+      <p class="workshop-date">Apr 12, 2026</p>
+      <h3>Flamenco Intensive</h3>
+      <p>Three hours of fire and footwork with guest artist Elena Torres. Explore the passion, rhythm, and technical demands of flamenco dance.</p>
+      <span class="workshop-price">$85</span>
+    </div>
+
+    <div class="workshop-card">
+      <p class="workshop-date">Apr 19, 2026</p>
+      <h3>Hip-Hop Choreography Bootcamp</h3>
+      <p>Full-day immersion in choreography creation. Learn how to build sequences, musicality, and performance quality with DeShawn Riley.</p>
+      <span class="workshop-price">$120</span>
+    </div>
+
+    <div class="workshop-card">
+      <p class="workshop-date">May 3, 2026</p>
+      <h3>Yoga &amp; Dance Fusion</h3>
+      <p>Where mindful movement meets creative expression. A two-hour workshop bridging yoga flow and contemporary dance techniques.</p>
+      <span class="workshop-price">$55</span>
+    </div>
+
+    <div class="workshop-card">
+      <p class="workshop-date">May 10, 2026</p>
+      <h3>Bollywood Dance Workshop</h3>
+      <p>Learn a full Bollywood routine from scratch. High energy, no experience needed. Ends with a group performance and refreshments.</p>
+      <span class="workshop-price">$45</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section class="section" id="faq">
+  <p class="section-label">Questions</p>
+  <h2>Frequently <span class="neon-pink">Asked</span></h2>
+  <hr class="neon-divider">
+
+  <div class="faq-list">
+    <div class="faq-item">
+      <details>
+        <summary>Do I need dance experience to join?</summary>
+        <div class="faq-answer">Not at all. Many of our classes are designed for complete beginners. Each class listing shows the recommended level. Our instructors are skilled at adapting to mixed-level groups, so you will always feel welcome.</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary>What should I wear?</summary>
+        <div class="faq-answer">Comfortable clothing you can move freely in. For ballet, fitted attire and ballet slippers are recommended. For hip-hop and Zumba, sneakers work great. Yoga classes are barefoot. We have a small retail area if you need dance shoes.</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary>How much do classes cost?</summary>
+        <div class="faq-answer">Drop-in classes are $22 each. We offer class packs (10 for $180, 20 for $320) and unlimited monthly memberships starting at $149/month. Your first class is always free.</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary>Is there parking available?</summary>
+        <div class="faq-answer">Yes. We have a small lot behind the building with 15 spaces (first come, first served). There is also street parking and a public garage one block east on 3rd Street. Bike racks are available at our entrance.</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary>Can I book the studio for private events?</summary>
+        <div class="faq-answer">Absolutely. Studio Aura is available for private lessons, rehearsals, photo/video shoots, and special events. Contact us for availability and rates. We offer discounted rates for nonprofit and community organizations.</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary>Do you offer kids or teen classes?</summary>
+        <div class="faq-answer">Yes. We have dedicated youth programs for ages 6-12 and teen classes for ages 13-17 in ballet, hip-hop, and gymnastics. Check our schedule or contact us for the current youth timetable.</div>
+      </details>
+    </div>
+
+    <div class="faq-item">
+      <details>
+        <summary>What is your cancellation policy?</summary>
+        <div class="faq-answer">Classes can be cancelled up to 4 hours before the start time at no charge. Late cancellations and no-shows will forfeit the class credit. Workshop cancellations require 48 hours notice for a full refund.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CONTACT ==================== -->
+<section class="section contact-section" id="contact">
+  <p class="section-label">Get in Touch</p>
+  <h2>Ready to <span class="neon-cyan">Move</span>?</h2>
+  <hr class="neon-divider" style="margin-left: auto; margin-right: auto;">
+  <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Your first class is on us. Walk in, sign up online, or reach out — we would love to meet you.</p>
+
+  <div class="contact-info">
+    <div class="contact-item">
+      <p class="label">Phone</p>
+      <p class="value">(555) 234-8901</p>
+    </div>
+    <div class="contact-item">
+      <p class="label">Email</p>
+      <p class="value">hello@studioaura.com</p>
+    </div>
+    <div class="contact-item">
+      <p class="label">Address</p>
+      <p class="value">247 Movement Lane, Arts District</p>
+    </div>
+  </div>
+
+  <a href="mailto:hello@studioaura.com" class="cta-button">Book Your Free Class</a>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="site-footer">
+  <p class="footer-brand">Studio Aura</p>
+  <p>&copy; 2026 Studio Aura. All rights reserved. 247 Movement Lane, Arts District, Downtown.</p>
+</footer>
+
+</body>
+</html>
