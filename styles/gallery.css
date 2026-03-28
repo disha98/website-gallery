@@ -319,6 +319,82 @@ body {
   font-weight: 400;
 }
 
+/* 16 - Minimal Luxe v2 */
+.preview-16 {
+  background: #FAFAF8;
+}
+.preview-16::after {
+  content: 'AURA';
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: #C9A96E;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  border-bottom: 1px solid #C9A96E;
+  padding-bottom: 0.3em;
+}
+
+/* 17 - Bold Urban v2 */
+.preview-17 {
+  background: #0D0D0D;
+}
+.preview-17::after {
+  content: 'STUDIO AURA';
+  font-family: 'Inter', sans-serif;
+  font-size: 1.8rem;
+  color: #FF3C38;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  text-shadow: 0 0 20px rgba(255, 60, 56, 0.4);
+  border-left: 4px solid #FFE66D;
+  padding-left: 0.5em;
+}
+
+/* 18 - Dark Editorial v2 */
+.preview-18 {
+  background: #0A0A0A;
+}
+.preview-18::after {
+  content: 'STUDIO AURA';
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: #D4A373;
+  letter-spacing: 0.25em;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* 19 - Monochrome Ballet v2 */
+.preview-19 {
+  background: #FFFFFF;
+}
+.preview-19::after {
+  content: 'AURA';
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #000000;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  border-top: 2px solid #000;
+  padding-top: 0.3em;
+}
+
+/* 20 - Art Deco v2 */
+.preview-20 {
+  background: #0D0D0D;
+  background-image: conic-gradient(from 0deg at 50% 100%, transparent 40%, #C9A84C33 41%, #C9A84C33 59%, transparent 60%);
+}
+.preview-20::after {
+  content: 'AURA';
+  font-family: 'Inter', sans-serif;
+  font-size: 2rem;
+  color: #C9A84C;
+  letter-spacing: 0.5em;
+  font-weight: 300;
+  border: 1px solid #C9A84C;
+  padding: 0.3em 0.6em;
+}
+
 /* Footer */
 .footer {
   text-align: center;

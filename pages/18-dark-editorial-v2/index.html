@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Aura — Dance & Fitness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Source+Sans+3:wght@300;400;600&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    /* ─── RESET & BASE ─── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 300;
+      color: #111111;
+      background: #FFFFFF;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── UTILITY ─── */
+    .back-link {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      z-index: 100;
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #111;
+      text-decoration: none;
+      border: 1px solid #CCCCCC;
+      padding: 0.5rem 1rem;
+      background: rgba(255,255,255,0.9);
+      transition: background 0.3s;
+    }
+
+    .back-link:hover { background: #0A0A0A; color: #E0E0E0; }
+
+    .section-pad { padding: 6rem 4rem; }
+    .section-pad-lg { padding: 8rem 4rem; }
+
+    .thin-rule { border: none; border-top: 1px solid #CCCCCC; margin: 2rem 0; }
+    .thin-rule-light { border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 2rem 0; }
+
+    .accent { color: #D4A373; }
+
+    .label {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #D4A373;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .label-light { color: #D4A373; }
+
+    /* ─── DARK SECTION ─── */
+    .dark {
+      background: #0A0A0A;
+      color: #E0E0E0;
+    }
+
+    .dark .back-link { color: #E0E0E0; border-color: rgba(255,255,255,0.2); background: rgba(10,10,10,0.9); }
+
+    /* ─── TYPOGRAPHY ─── */
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.05;
+    }
+
+    .pull-quote {
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      line-height: 1.6;
+      color: #D4A373;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+    }
+
+    .hero-title {
+      font-size: clamp(5rem, 14vw, 12rem);
+      letter-spacing: -0.03em;
+      line-height: 0.9;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .hero-title span { display: block; }
+
+    .hero-rule { border: none; border-top: 1px solid #CCCCCC; margin: 3rem 0; width: 100%; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 60% 40%;
+      gap: 3rem;
+      align-items: start;
+      margin-top: 2rem;
+      width: 100%;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      filter: grayscale(0.3);
+    }
+
+    .hero-text {
+      padding-top: 2rem;
+    }
+
+    .hero-text .tagline {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 2rem;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-text p {
+      font-size: 1rem;
+      color: #666;
+      max-width: 320px;
+    }
+
+    .hero-meta {
+      margin-top: 2rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #999;
+    }
+
+    /* ─── ABOUT ─── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 40% 60%;
+      gap: 4rem;
+      max-width: 1200px;
+    }
+
+    .about-left .section-number {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 8rem;
+      color: rgba(255,255,255,0.06);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .about-right h2 {
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+      color: #FFFFFF;
+    }
+
+    .drop-cap::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-style: italic;
+      float: left;
+      font-size: 5.5rem;
+      line-height: 0.8;
+      padding-right: 0.8rem;
+      padding-top: 0.2rem;
+      color: #D4A373;
+    }
+
+    .about-right p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      color: #BBBBBB;
+      max-width: 540px;
+    }
+
+    .about-address {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #D4A373;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .about-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      margin-top: 2rem;
+      filter: grayscale(0.8);
+    }
+
+    /* ─── DANCE FORMS ─── */
+    .forms-header {
+      display: grid;
+      grid-template-columns: 60% 40%;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .forms-header h2 {
+      font-size: 4rem;
+      line-height: 1;
+    }
+
+    .forms-header .pull-quote {
+      padding-top: 1rem;
+      max-width: 360px;
+    }
+
+    .forms-list { list-style: none; }
+
+    .forms-list li {
+      border-top: 1px solid #CCCCCC;
+      padding: 1.2rem 0;
+    }
+
+    .forms-list li:last-child {
+      border-bottom: 1px solid #CCCCCC;
+    }
+
+    .form-item-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+    }
+
+    .form-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 1.5rem;
+      white-space: nowrap;
+    }
+
+    .dotted-leader {
+      flex: 1;
+      border-bottom: 1px dotted #CCCCCC;
+      margin-bottom: 0.35em;
+    }
+
+    .dark .dotted-leader {
+      border-bottom-color: rgba(255,255,255,0.2);
+    }
+
+    .form-brief {
+      font-size: 0.85rem;
+      color: #888;
+      white-space: nowrap;
+    }
+
+    /* Details / Summary */
+    details {
+      margin: 0;
+    }
+
+    details summary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      width: 100%;
+    }
+
+    details summary::-webkit-details-marker { display: none; }
+    details summary::marker { display: none; content: ''; }
+
+    details summary .form-name::after {
+      content: ' +';
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 300;
+      font-style: normal;
+      font-size: 1rem;
+      color: #D4A373;
+      margin-left: 0.5rem;
+    }
+
+    details[open] summary .form-name::after {
+      content: ' \2212';
+    }
+
+    .form-detail {
+      padding: 1rem 0 0.5rem 0;
+      max-width: 600px;
+    }
+
+    .form-detail p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #666;
+    }
+
+    .dark .form-detail p { color: #999; }
+
+    /* ─── FULL BLEED IMAGE DIVIDER ─── */
+    .image-divider {
+      width: 100%;
+      height: 65vh;
+      overflow: hidden;
+    }
+
+    .image-divider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.8) contrast(1.1);
+    }
+
+    /* ─── SCHEDULE ─── */
+    .schedule-header {
+      margin-bottom: 4rem;
+    }
+
+    .schedule-header h2 {
+      font-size: 4rem;
+      line-height: 1;
+      color: #FFFFFF;
+    }
+
+    .schedule-day {
+      margin-bottom: 3rem;
+    }
+
+    .schedule-day h3 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #FFFFFF;
+    }
+
+    .schedule-classes { list-style: none; }
+
+    .schedule-classes li {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .class-name {
+      font-size: 1rem;
+      color: #E0E0E0;
+      white-space: nowrap;
+    }
+
+    .class-time {
+      font-size: 0.85rem;
+      color: #D4A373;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    /* ─── WORKSHOPS ─── */
+    .workshops-header {
+      margin-bottom: 4rem;
+    }
+
+    .workshops-header h2 {
+      font-size: 4rem;
+      line-height: 1;
+    }
+
+    .workshops-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem 4rem;
+    }
+
+    .workshop-card {
+      border-top: 2px solid #111;
+      padding-top: 1.5rem;
+    }
+
+    .workshop-date {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #D4A373;
+      margin-bottom: 0.75rem;
+    }
+
+    .workshop-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+
+    .workshop-card p {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.7;
+      max-width: 400px;
+    }
+
+    /* ─── WORKSHOPS IMAGE GRID ─── */
+    .workshops-image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .workshops-image-grid img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      filter: grayscale(0.8);
+    }
+
+    /* ─── FAQ ─── */
+    .faq-header {
+      margin-bottom: 4rem;
+    }
+
+    .faq-header h2 {
+      font-size: 4rem;
+      line-height: 1;
+      color: #FFFFFF;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem 5rem;
+    }
+
+    .faq-item {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 1.5rem;
+    }
+
+    .faq-question {
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: #FFFFFF;
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+
+    .faq-answer {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #999;
+    }
+
+    /* ─── CONTACT / FOOTER ─── */
+    .contact {
+      text-align: center;
+      padding: 8rem 4rem;
+    }
+
+    .contact h2 {
+      font-size: 5rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-details {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #888;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-details a {
+      color: #888;
+      text-decoration: none;
+    }
+
+    .contact-details a:hover {
+      color: #D4A373;
+    }
+
+    .contact .pull-quote {
+      margin-top: 3rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-rule {
+      border: none;
+      border-top: 1px solid #CCCCCC;
+      margin: 4rem auto 2rem;
+      max-width: 200px;
+    }
+
+    .footer-note {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #BBBBBB;
+      text-align: center;
+      padding-bottom: 3rem;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .section-pad { padding: 4rem 2rem; }
+      .section-pad-lg { padding: 5rem 2rem; }
+      .hero { padding: 6rem 2rem 3rem; }
+      .hero-title { font-size: clamp(3rem, 12vw, 7rem); }
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-image { height: 350px; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .forms-header { grid-template-columns: 1fr; }
+      .workshops-grid { grid-template-columns: 1fr; }
+      .workshops-image-grid { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .back-link { top: 1rem; left: 1rem; }
+      .about-right h2 { font-size: 2.5rem; }
+      .contact h2 { font-size: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="../../index.html" class="back-link">&larr; Back to Gallery</a>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero">
+    <h1 class="hero-title">
+      <span>STUDIO</span>
+      <span>AURA</span>
+    </h1>
+    <hr class="hero-rule">
+    <div class="hero-grid">
+      <img
+        src="../../images/ballet-dancer.png"
+        alt="Ballet dancer in dramatic pose"
+        class="hero-image"
+      >
+      <div class="hero-text">
+        <span class="label">Dance &amp; Fitness Studio</span>
+        <div class="tagline">Where movement becomes<br>an art form.</div>
+        <p>A sanctuary for dancers, movers, and seekers of expression. Nine disciplines. One studio. Infinite possibility.</p>
+        <div class="hero-meta">Est. 2019 &middot; Arts District &middot; Downtown</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ABOUT ═══════════════ -->
+  <section class="dark section-pad-lg">
+    <div class="about-grid">
+      <div class="about-left">
+        <span class="section-number">01</span>
+        <img
+          src="../../images/dance-studio.png"
+          alt="Interior of Studio Aura"
+          class="about-image"
+        >
+      </div>
+      <div class="about-right">
+        <span class="label label-light">About the Studio</span>
+        <h2>A Space for<br>Radical Movement</h2>
+        <p class="drop-cap">Studio Aura was born from a simple conviction: that the body in motion is the most honest form of storytelling. Founded in 2019 in the heart of the Arts District, our studio has become a gathering place for those who believe dance is not decoration&mdash;it is language.</p>
+        <p>We house nine distinct disciplines under one roof, from the precision of classical ballet to the raw energy of hip-hop, from the meditative flow of yoga to the explosive joy of Bollywood. Every class is led by working artists and performers who bring the stage into the studio.</p>
+        <p>Our 4,000-square-foot space features sprung hardwood floors, floor-to-ceiling mirrors, a professional sound system, and natural light that pours through arched warehouse windows. This is not a gym. This is a theatre of the everyday.</p>
+        <div class="about-address">247 Movement Lane, Arts District, Downtown</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ DANCE FORMS & FITNESS ═══════════════ -->
+  <section class="section-pad-lg">
+    <div class="forms-header">
+      <div>
+        <span class="label">02 &mdash; Disciplines</span>
+        <h2>Dance Forms<br>&amp; Fitness</h2>
+      </div>
+      <p class="pull-quote">&ldquo;To watch us dance is to hear our hearts speak.&rdquo;<br><span style="font-family:'Source Sans 3',sans-serif; font-style:normal; font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:#999;">&mdash; Hopi Indian Saying</span></p>
+    </div>
+
+    <ul class="forms-list">
+      <li>
+        <details>
+          <summary>
+            <span class="form-name">Ballet</span>
+            <span class="dotted-leader"></span>
+            <span class="form-brief">Classical &amp; Neoclassical</span>
+          </summary>
+          <div class="form-detail">
+            <p>From barre fundamentals to centre work and petit allegro, our ballet program honors the classical tradition while embracing contemporary interpretation. Open to all levels. Pointe classes available by instructor invitation.</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>
+            <span class="form-name">Contemporary</span>
+            <span class="dotted-leader"></span>
+            <span class="form-brief">Floor work &amp; Improvisation</span>
+          </summary>
+          <div class="form-detail">
+            <p>Rooted in release technique and contact improvisation, our contemporary classes explore weight, momentum, and breath. Expect floor work, partnering, and guided improvisational scores that push the boundaries of personal expression.</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>
+            <span class="form-name">Hip-Hop</span>
+            <span class="dotted-leader"></span>
+            <span class="form-brief">Street Styles &amp; Choreography</span>
+          </summary>
+          <div class="form-detail">
+            <p>From foundational grooves and isolation drills to full choreography sets, our hip-hop program covers breaking, popping, locking, and freestyle. High energy, community-driven, and always rooted in the culture.</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>
+            <span class="form-name">Jazz</span>
+            <span class="dotted-leader"></span>
+            <span class="form-brief">Broadway &amp; Commercial</span>
+          </summary>
+          <div class="form-detail">
+            <p>Sharp isolations, dynamic turns, and theatrical flair. Our jazz classes draw from both Broadway and commercial traditions, building strength, flexibility, and stage presence in equal measure.</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>
+            <span class="form-name">Salsa</span>
+            <span class="dotted-leader"></span>
+            <span class="form-brief">Partner &amp; Solo Styling</span>
+          </summary>
+          <div class="form-detail">
+            <p>Learn the rhythmic intricacies of salsa with classes covering on1 and on2 timing, cross-body leads, turn patterns, and solo shines. No partner required&mdash;we rotate throughout class.</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>
+            <span class="form-name">Bollywood</span>
+            <span class="dotted-leader"></span>
+            <span class="form-brief">Filmi &amp; Folk Fusion</span>
+          </summary>
+          <div class="form-detail">
+            <p>A vibrant fusion of classical Indian dance, folk traditions, and contemporary Bollywood choreography. High-energy routines set to the latest hits and timeless classics. All levels welcome&mdash;expressiveness matters more than experience.</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>
+            <span class="form-name">Zumba</span>
+            <span class="dotted-leader"></span>
+            <span class="form-brief">Latin-Inspired Cardio</span>
+          </summary>
+          <div class="form-detail">
+            <p>A high-energy fitness party blending Latin and world rhythms with easy-to-follow choreography. No dance experience needed. Just show up, move, and leave drenched in endorphins.</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>
+            <span class="form-name">Yoga</span>
+            <span class="dotted-leader"></span>
+            <span class="form-brief">Vinyasa &amp; Restorative</span>
+          </summary>
+          <div class="form-detail">
+            <p>Complement your dance practice with vinyasa flow for strength and flexibility, or restorative sessions for deep recovery. Our yoga classes are designed specifically with dancers and movers in mind.</p>
+          </div>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>
+            <span class="form-name">Gymnastics</span>
+            <span class="dotted-leader"></span>
+            <span class="form-brief">Tumbling &amp; Acrobatics</span>
+          </summary>
+          <div class="form-detail">
+            <p>Build aerial awareness, tumbling skills, and acrobatic strength. From cartwheels and handstands to back tucks and aerials, our gymnastics program develops the fearless physicality that elevates every other discipline.</p>
+          </div>
+        </details>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ═══════════════ FULL-BLEED IMAGE DIVIDER ═══════════════ -->
+  <div class="image-divider">
+    <img
+      src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=1600&h=900&fit=crop"
+      alt="Dancer in dramatic performance"
+    >
+  </div>
+
+  <!-- ═══════════════ WEEKLY SCHEDULE ═══════════════ -->
+  <section class="dark section-pad-lg">
+    <div class="schedule-header">
+      <span class="label label-light">03 &mdash; Timetable</span>
+      <h2>Weekly Schedule</h2>
+      <hr class="thin-rule-light">
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem 5rem;">
+      <div class="schedule-day">
+        <h3>Monday</h3>
+        <ul class="schedule-classes">
+          <li><span class="class-name">Ballet (Beginner)</span><span class="dotted-leader"></span><span class="class-time">9:00 AM</span></li>
+          <li><span class="class-name">Yoga (Vinyasa)</span><span class="dotted-leader"></span><span class="class-time">11:00 AM</span></li>
+          <li><span class="class-name">Hip-Hop</span><span class="dotted-leader"></span><span class="class-time">5:30 PM</span></li>
+          <li><span class="class-name">Zumba</span><span class="dotted-leader"></span><span class="class-time">7:00 PM</span></li>
+        </ul>
+      </div>
+
+      <div class="schedule-day">
+        <h3>Tuesday</h3>
+        <ul class="schedule-classes">
+          <li><span class="class-name">Contemporary</span><span class="dotted-leader"></span><span class="class-time">9:30 AM</span></li>
+          <li><span class="class-name">Bollywood</span><span class="dotted-leader"></span><span class="class-time">12:00 PM</span></li>
+          <li><span class="class-name">Jazz</span><span class="dotted-leader"></span><span class="class-time">5:00 PM</span></li>
+          <li><span class="class-name">Salsa</span><span class="dotted-leader"></span><span class="class-time">7:30 PM</span></li>
+        </ul>
+      </div>
+
+      <div class="schedule-day">
+        <h3>Wednesday</h3>
+        <ul class="schedule-classes">
+          <li><span class="class-name">Ballet (Intermediate)</span><span class="dotted-leader"></span><span class="class-time">9:00 AM</span></li>
+          <li><span class="class-name">Gymnastics</span><span class="dotted-leader"></span><span class="class-time">11:00 AM</span></li>
+          <li><span class="class-name">Contemporary</span><span class="dotted-leader"></span><span class="class-time">5:30 PM</span></li>
+          <li><span class="class-name">Yoga (Restorative)</span><span class="dotted-leader"></span><span class="class-time">7:30 PM</span></li>
+        </ul>
+      </div>
+
+      <div class="schedule-day">
+        <h3>Thursday</h3>
+        <ul class="schedule-classes">
+          <li><span class="class-name">Hip-Hop (Advanced)</span><span class="dotted-leader"></span><span class="class-time">9:00 AM</span></li>
+          <li><span class="class-name">Zumba</span><span class="dotted-leader"></span><span class="class-time">11:30 AM</span></li>
+          <li><span class="class-name">Bollywood</span><span class="dotted-leader"></span><span class="class-time">5:00 PM</span></li>
+          <li><span class="class-name">Ballet (Pointe)</span><span class="dotted-leader"></span><span class="class-time">7:00 PM</span></li>
+        </ul>
+      </div>
+
+      <div class="schedule-day">
+        <h3>Friday</h3>
+        <ul class="schedule-classes">
+          <li><span class="class-name">Jazz</span><span class="dotted-leader"></span><span class="class-time">9:30 AM</span></li>
+          <li><span class="class-name">Salsa</span><span class="dotted-leader"></span><span class="class-time">12:00 PM</span></li>
+          <li><span class="class-name">Contemporary</span><span class="dotted-leader"></span><span class="class-time">4:30 PM</span></li>
+          <li><span class="class-name">Gymnastics</span><span class="dotted-leader"></span><span class="class-time">6:30 PM</span></li>
+        </ul>
+      </div>
+
+      <div class="schedule-day">
+        <h3>Saturday</h3>
+        <ul class="schedule-classes">
+          <li><span class="class-name">Ballet (All Levels)</span><span class="dotted-leader"></span><span class="class-time">10:00 AM</span></li>
+          <li><span class="class-name">Hip-Hop</span><span class="dotted-leader"></span><span class="class-time">12:00 PM</span></li>
+          <li><span class="class-name">Yoga (Vinyasa)</span><span class="dotted-leader"></span><span class="class-time">2:00 PM</span></li>
+          <li><span class="class-name">Zumba</span><span class="dotted-leader"></span><span class="class-time">4:00 PM</span></li>
+        </ul>
+      </div>
+
+      <div class="schedule-day" style="grid-column: span 2; max-width:50%;">
+        <h3>Sunday</h3>
+        <ul class="schedule-classes">
+          <li><span class="class-name">Yoga (Restorative)</span><span class="dotted-leader"></span><span class="class-time">10:00 AM</span></li>
+          <li><span class="class-name">Open Studio Practice</span><span class="dotted-leader"></span><span class="class-time">12:00 &ndash; 4:00 PM</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ WORKSHOPS ═══════════════ -->
+  <section class="section-pad-lg">
+    <div class="workshops-header">
+      <span class="label">04 &mdash; Upcoming</span>
+      <h2>Workshops &amp;<br>Intensives</h2>
+      <hr class="thin-rule">
+    </div>
+
+    <div class="workshops-grid">
+      <div class="workshop-card">
+        <div class="workshop-date">April 12, 2026</div>
+        <h3>Flamenco Intensive</h3>
+        <p>A full-day immersion into the passion and precision of flamenco. Covering footwork, hand styling, and emotional expression with guest artist Maria del Sol. All levels. 10 AM &ndash; 4 PM.</p>
+      </div>
+      <div class="workshop-card">
+        <div class="workshop-date">April 19, 2026</div>
+        <h3>Hip-Hop Choreography Bootcamp</h3>
+        <p>An intensive afternoon of choreography creation and performance. Learn a full routine from concept to stage-ready execution. Intermediate and above. 1 PM &ndash; 6 PM.</p>
+      </div>
+      <div class="workshop-card">
+        <div class="workshop-date">May 3, 2026</div>
+        <h3>Yoga &amp; Dance Fusion</h3>
+        <p>Explore the intersection of breath-centered movement and dance technique. A meditative yet dynamic workshop bridging vinyasa flow with contemporary floor work. All levels. 9 AM &ndash; 12 PM.</p>
+      </div>
+      <div class="workshop-card">
+        <div class="workshop-date">May 10, 2026</div>
+        <h3>Bollywood Dance Workshop</h3>
+        <p>Learn an iconic Bollywood routine from start to finish. Covers expressions, gestures, and high-energy choreography set to a classic hit. No experience necessary. 2 PM &ndash; 5 PM.</p>
+      </div>
+    </div>
+
+    <div class="workshops-image-grid">
+      <img
+        src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=900&h=500&fit=crop"
+        alt="Dancers in rehearsal"
+      >
+      <img
+        src="../../images/dance-studio.png"
+        alt="Dance studio interior"
+      >
+    </div>
+  </section>
+
+  <!-- ═══════════════ FAQ ═══════════════ -->
+  <section class="dark section-pad-lg">
+    <div class="faq-header">
+      <span class="label label-light">05 &mdash; Questions</span>
+      <h2>Frequently<br>Asked</h2>
+      <hr class="thin-rule-light">
+    </div>
+
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-question">Do I need prior dance experience to take a class?</div>
+        <div class="faq-answer">Not at all. Most of our classes offer beginner-friendly options, and our instructors are skilled at meeting students where they are. We recommend starting with an introductory or all-levels class.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What should I wear to class?</div>
+        <div class="faq-answer">Comfortable, form-fitting clothing that allows full range of motion. Ballet requires ballet slippers; hip-hop requires clean sneakers. Yoga and contemporary are typically done barefoot. We sell basic supplies at the front desk.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">How do drop-in classes work?</div>
+        <div class="faq-answer">Simply arrive 10 minutes before class, check in at the front desk, and you are in. Drop-in rate is $22 per class. We also offer 5-class and 10-class packs, plus unlimited monthly memberships.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Can I try multiple disciplines?</div>
+        <div class="faq-answer">Absolutely&mdash;we encourage it. Our monthly unlimited pass gives you access to every class on the schedule. Many of our students cross-train across three or four disciplines.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do you offer private lessons?</div>
+        <div class="faq-answer">Yes. Private and semi-private sessions are available in all nine disciplines. These can be booked directly with individual instructors or through the front desk. Ideal for wedding choreography, audition prep, or personal goals.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Is the studio available for private events?</div>
+        <div class="faq-answer">Our main studio space is available for private rental on Sunday evenings and by special arrangement. Perfect for rehearsals, photo shoots, small performances, and private workshops. Contact us for rates.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONTACT / FOOTER ═══════════════ -->
+  <section class="contact">
+    <span class="label">06 &mdash; Reach Us</span>
+    <h2>Get in Touch</h2>
+    <hr class="thin-rule" style="max-width:120px; margin:2rem auto;">
+    <div class="contact-details">(555) 234-8901</div>
+    <div class="contact-details"><a href="mailto:hello@studioaura.com">hello@studioaura.com</a></div>
+    <div class="contact-details" style="margin-top:1rem;">247 Movement Lane, Arts District, Downtown</div>
+    <p class="pull-quote">&ldquo;The body says what words cannot.&rdquo;</p>
+    <hr class="footer-rule">
+  </section>
+
+  <div class="footer-note">Studio Aura &middot; Dance &amp; Fitness &middot; Since 2019</div>
+
+</body>
+</html>
