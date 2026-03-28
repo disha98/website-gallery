@@ -436,6 +436,36 @@ body {
   letter-spacing: 0.15em;
 }
 
+/* 24 - Luxe Bodoni */
+.preview-24 {
+  background: #FAFAF8;
+}
+.preview-24::after {
+  content: 'AURA';
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: #C9A96E;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* 25 - Luxe Bodoni Final */
+.preview-25 {
+  background: #FAFAF8;
+}
+.preview-25::after {
+  content: 'STUDIO AURA';
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: #C9A96E;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-bottom: 1px solid #C9A96E;
+  padding-bottom: 0.3em;
+}
+
 /* Footer */
 .footer {
   text-align: center;
